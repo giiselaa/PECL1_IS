@@ -5,9 +5,9 @@ package codigo;
  * 
  * @author Elia Encinas y Gisela González
  */
-public class Empleado extends Usuario{
+public class Responsable extends Usuario {
     
-    public Empleado(String nombre, String clave) {
+    public Responsable(String nombre, String clave) {
         super(nombre, clave);
     }
     
