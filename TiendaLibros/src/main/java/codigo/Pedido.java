@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * 
- * @author Elia Encinas y Gisela González
+ * @author Elia Encinas, Gisela González y Achraf (apellido)
  */
 public class Pedido {
     private long codigoP;

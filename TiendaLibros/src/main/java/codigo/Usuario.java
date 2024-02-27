@@ -3,7 +3,7 @@ package codigo;
 
 /**
  *
- * @author Elia Encinas y Gisela González
+ * @author Elia Encinas, Gisela González y Achraf (apellido)
  */
 public class Usuario {
     private String nombre;
