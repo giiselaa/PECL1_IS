@@ -1,2 +1,2 @@
 # PECL1_IS
-Repositorio para la iterfaz gráfica de la PECL1
+Repositorio para compartir la PECL1 de Ingeniería de Software
