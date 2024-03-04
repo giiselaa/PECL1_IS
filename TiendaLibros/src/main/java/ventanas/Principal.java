@@ -1,30 +1,22 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ventanas;
-
-import com.formdev.flatlaf.FlatLightLaf;
 
 /**
  *
  * @author giise
  */
-public class Principal extends javax.swing.JFrame {
+public class Principal extends javax.swing.JPanel {
 
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
-        initStyles();
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
     }
 
-    private void initStyles(){
-        
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,218 +26,45 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fondo = new javax.swing.JPanel();
-        menu = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
-        BotonPrincipal = new javax.swing.JButton();
-        BotonAlta = new javax.swing.JButton();
-        BotonPedididosP = new javax.swing.JButton();
-        BotonFidelizacion = new javax.swing.JButton();
-        BotonSalir = new javax.swing.JButton();
-        cabecera = new javax.swing.JPanel();
-        contenido = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(754, 490));
 
-        fondo.setBackground(new java.awt.Color(255, 255, 255));
-        fondo.setPreferredSize(new java.awt.Dimension(1024, 640));
+        jLabel2.setText("hola :3");
 
-        menu.setBackground(new java.awt.Color(94, 57, 21));
-
-        logo.setText("Logo");
-
-        BotonPrincipal.setBackground(new java.awt.Color(94, 57, 21));
-        BotonPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        BotonPrincipal.setText("Principal");
-        BotonPrincipal.setBorder(null);
-        BotonPrincipal.setBorderPainted(false);
-        BotonPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        BotonAlta.setBackground(new java.awt.Color(94, 57, 21));
-        BotonAlta.setForeground(new java.awt.Color(255, 255, 255));
-        BotonAlta.setText("Dar de Alta");
-        BotonAlta.setBorder(null);
-        BotonAlta.setBorderPainted(false);
-        BotonAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonAlta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonAltaActionPerformed(evt);
-            }
-        });
-
-        BotonPedididosP.setBackground(new java.awt.Color(94, 57, 21));
-        BotonPedididosP.setForeground(new java.awt.Color(255, 255, 255));
-        BotonPedididosP.setText("Pedidos Pendientes");
-        BotonPedididosP.setBorder(null);
-        BotonPedididosP.setBorderPainted(false);
-        BotonPedididosP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonPedididosP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonPedididosPActionPerformed(evt);
-            }
-        });
-
-        BotonFidelizacion.setBackground(new java.awt.Color(94, 57, 21));
-        BotonFidelizacion.setForeground(new java.awt.Color(255, 255, 255));
-        BotonFidelizacion.setText("Programa de fidelización");
-        BotonFidelizacion.setBorder(null);
-        BotonFidelizacion.setBorderPainted(false);
-        BotonFidelizacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonFidelizacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonFidelizacionActionPerformed(evt);
-            }
-        });
-
-        BotonSalir.setBackground(new java.awt.Color(94, 57, 21));
-        BotonSalir.setForeground(new java.awt.Color(255, 255, 255));
-        BotonSalir.setText("Cerrar/Salir");
-        BotonSalir.setBorder(null);
-        BotonSalir.setBorderPainted(false);
-        BotonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonSalirActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
-        menu.setLayout(menuLayout);
-        menuLayout.setHorizontalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(BotonPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(BotonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(BotonPedididosP, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(BotonFidelizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(BotonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(320, Short.MAX_VALUE))
         );
-        menuLayout.setVerticalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(BotonPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonPedididosP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonFidelizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(206, 206, 206)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(235, Short.MAX_VALUE))
         );
 
-        cabecera.setBackground(new java.awt.Color(150, 116, 83));
-        cabecera.setPreferredSize(new java.awt.Dimension(750, 150));
-
-        javax.swing.GroupLayout cabeceraLayout = new javax.swing.GroupLayout(cabecera);
-        cabecera.setLayout(cabeceraLayout);
-        cabeceraLayout.setHorizontalGroup(
-            cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 754, Short.MAX_VALUE)
-        );
-        cabeceraLayout.setVerticalGroup(
-            cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        contenido.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout contenidoLayout = new javax.swing.GroupLayout(contenido);
-        contenido.setLayout(contenidoLayout);
-        contenidoLayout.setHorizontalGroup(
-            contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 754, Short.MAX_VALUE)
-        );
-        contenidoLayout.setVerticalGroup(
-            contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
-        fondo.setLayout(fondoLayout);
-        fondoLayout.setHorizontalGroup(
-            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoLayout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
-                    .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        fondoLayout.setVerticalGroup(
-            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(fondoLayout.createSequentialGroup()
-                .addComponent(cabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAltaActionPerformed
-        DarAlta alta = new DarAlta();
-        this.dispose();   
-    }//GEN-LAST:event_BotonAltaActionPerformed
-
-    private void BotonFidelizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFidelizacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonFidelizacionActionPerformed
-
-    private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_BotonSalirActionPerformed
-
-    private void BotonPedididosPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPedididosPActionPerformed
-        PedidosPendientes ventana = new PedidosPendientes();
-        this.dispose();
-    }//GEN-LAST:event_BotonPedididosPActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        FlatLightLaf.setup();
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Principal().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonAlta;
-    private javax.swing.JButton BotonFidelizacion;
-    private javax.swing.JButton BotonPedididosP;
-    private javax.swing.JButton BotonPrincipal;
-    private javax.swing.JButton BotonSalir;
-    private javax.swing.JPanel cabecera;
-    private javax.swing.JPanel contenido;
-    private javax.swing.JPanel fondo;
-    private javax.swing.JLabel logo;
-    private javax.swing.JPanel menu;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
