@@ -74,7 +74,7 @@ public class Inicio extends javax.swing.JFrame {
         BotonPrincipal.setBackground(new java.awt.Color(94, 57, 21));
         BotonPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        BotonPrincipal.setText("Principal");
+        BotonPrincipal.setText("                Principal");
         BotonPrincipal.setBorder(null);
         BotonPrincipal.setBorderPainted(false);
         BotonPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -83,7 +83,7 @@ public class Inicio extends javax.swing.JFrame {
         BotonAlta.setBackground(new java.awt.Color(94, 57, 21));
         BotonAlta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonAlta.setForeground(new java.awt.Color(255, 255, 255));
-        BotonAlta.setText("Dar de Alta");
+        BotonAlta.setText("             Dar de Alta");
         BotonAlta.setBorder(null);
         BotonAlta.setBorderPainted(false);
         BotonAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -97,7 +97,7 @@ public class Inicio extends javax.swing.JFrame {
         BotonPedididosP.setBackground(new java.awt.Color(94, 57, 21));
         BotonPedididosP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonPedididosP.setForeground(new java.awt.Color(255, 255, 255));
-        BotonPedididosP.setText("Pedidos Pendientes");
+        BotonPedididosP.setText("        Pedidos Pendientes");
         BotonPedididosP.setBorder(null);
         BotonPedididosP.setBorderPainted(false);
         BotonPedididosP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -111,7 +111,7 @@ public class Inicio extends javax.swing.JFrame {
         BotonFidelizacion.setBackground(new java.awt.Color(94, 57, 21));
         BotonFidelizacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonFidelizacion.setForeground(new java.awt.Color(255, 255, 255));
-        BotonFidelizacion.setText("Programa de fidelización");
+        BotonFidelizacion.setText("    Programa de fidelización");
         BotonFidelizacion.setBorder(null);
         BotonFidelizacion.setBorderPainted(false);
         BotonFidelizacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
