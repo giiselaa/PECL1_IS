@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package presentacion;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.BorderLayout;
+import ventanas.DarAlta;
 import ventanas.Principal;
 
 /**
@@ -28,12 +26,11 @@ public class Inicio extends javax.swing.JFrame {
     private void initStyles(){
         //inicializar fuentes
         mensaje.putClientProperty( "FlatLaf.style", "font: $h1.font" );
-
     }
     
     private void initContenido() {
         Principal p1 = new Principal();
-        p1.setSize(750, 430);
+        p1.setSize(800, 490);
         p1.setLocation(0,0);
         
         contenido.removeAll();
@@ -68,6 +65,7 @@ public class Inicio extends javax.swing.JFrame {
         fondo.setPreferredSize(new java.awt.Dimension(1024, 640));
 
         menu.setBackground(new java.awt.Color(94, 57, 21));
+        menu.setPreferredSize(new java.awt.Dimension(270, 640));
 
         logo.setText("Logo");
 
@@ -75,16 +73,21 @@ public class Inicio extends javax.swing.JFrame {
         BotonPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         BotonPrincipal.setText("Principal");
-        BotonPrincipal.setBorder(null);
+        BotonPrincipal.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonPrincipal.setBorderPainted(false);
         BotonPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonPrincipalActionPerformed(evt);
+            }
+        });
 
         BotonAlta.setBackground(new java.awt.Color(94, 57, 21));
         BotonAlta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonAlta.setForeground(new java.awt.Color(255, 255, 255));
         BotonAlta.setText("Dar de Alta");
-        BotonAlta.setBorder(null);
+        BotonAlta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonAlta.setBorderPainted(false);
         BotonAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonAlta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -98,7 +101,7 @@ public class Inicio extends javax.swing.JFrame {
         BotonPedididosP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonPedididosP.setForeground(new java.awt.Color(255, 255, 255));
         BotonPedididosP.setText("Pedidos Pendientes");
-        BotonPedididosP.setBorder(null);
+        BotonPedididosP.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonPedididosP.setBorderPainted(false);
         BotonPedididosP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonPedididosP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -112,7 +115,7 @@ public class Inicio extends javax.swing.JFrame {
         BotonFidelizacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonFidelizacion.setForeground(new java.awt.Color(255, 255, 255));
         BotonFidelizacion.setText("Programa de fidelización");
-        BotonFidelizacion.setBorder(null);
+        BotonFidelizacion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonFidelizacion.setBorderPainted(false);
         BotonFidelizacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonFidelizacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -141,7 +144,8 @@ public class Inicio extends javax.swing.JFrame {
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLayout.createSequentialGroup()
                 .addGap(79, 79, 79)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 72, Short.MAX_VALUE))
             .addComponent(BotonPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonPedididosP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,7 +154,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
@@ -161,13 +165,13 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(BotonPedididosP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonFidelizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(BotonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
 
         cabecera.setBackground(new java.awt.Color(150, 116, 83));
-        cabecera.setPreferredSize(new java.awt.Dimension(750, 150));
+        cabecera.setPreferredSize(new java.awt.Dimension(794, 150));
 
         mensaje.setForeground(new java.awt.Color(255, 255, 255));
         mensaje.setText("Bienvenido a TiendaLibros");
@@ -177,16 +181,16 @@ public class Inicio extends javax.swing.JFrame {
         cabeceraLayout.setHorizontalGroup(
             cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cabeceraLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(398, 398, 398))
+                .addGap(40, 40, 40)
+                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                .addGap(390, 390, 390))
         );
         cabeceraLayout.setVerticalGroup(
             cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cabeceraLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
-                .addGap(48, 48, 48))
+                .addGap(46, 46, 46)
+                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addGap(51, 51, 51))
         );
 
         contenido.setBackground(new java.awt.Color(255, 255, 255));
@@ -195,11 +199,11 @@ public class Inicio extends javax.swing.JFrame {
         contenido.setLayout(contenidoLayout);
         contenidoLayout.setHorizontalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1274, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         contenidoLayout.setVerticalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
@@ -209,25 +213,23 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(fondoLayout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE)
-                    .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
+                    .addComponent(cabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addComponent(cabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(160, 160, 160)
+                .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
+            .addComponent(cabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1472, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +241,14 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAltaActionPerformed
-         
+        DarAlta p2 = new DarAlta();
+        p2.setSize(800, 490);
+        p2.setLocation(0,0);
+        
+        contenido.removeAll();
+        contenido.add(p2, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
     }//GEN-LAST:event_BotonAltaActionPerformed
 
     private void BotonFidelizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFidelizacionActionPerformed
@@ -253,6 +262,17 @@ public class Inicio extends javax.swing.JFrame {
     private void BotonPedididosPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPedididosPActionPerformed
        
     }//GEN-LAST:event_BotonPedididosPActionPerformed
+
+    private void BotonPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPrincipalActionPerformed
+        Principal p1 = new Principal();
+        p1.setSize(800, 490);
+        p1.setLocation(0,0);
+        
+        contenido.removeAll();
+        contenido.add(p1, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_BotonPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
