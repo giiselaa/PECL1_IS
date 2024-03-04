@@ -8,12 +8,12 @@ package ventanas;
  *
  * @author giise
  */
-public class DarAlta extends javax.swing.JPanel {
+public class PedidosPendientes extends javax.swing.JPanel {
 
     /**
-     * Creates new form DarAlta
+     * Creates new form PedidosPendientes
      */
-    public DarAlta() {
+    public PedidosPendientes() {
         initComponents();
     }
 
@@ -29,28 +29,25 @@ public class DarAlta extends javax.swing.JPanel {
         fondo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(800, 490));
-
         fondo.setBackground(new java.awt.Color(255, 255, 255));
-        fondo.setPreferredSize(new java.awt.Dimension(800, 490));
 
-        jLabel1.setText("Dar Alta");
+        jLabel1.setText("Pedidos pendientes");
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(333, 333, 333)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(378, 378, 378))
+                .addGap(275, 275, 275)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(348, Short.MAX_VALUE))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(226, 226, 226)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(248, 248, 248))
+                .addGap(125, 125, 125)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(304, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

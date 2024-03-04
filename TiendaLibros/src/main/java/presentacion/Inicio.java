@@ -3,7 +3,10 @@ package presentacion;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
 import ventanas.DarAlta;
+import ventanas.Fidelizacion;
+import ventanas.PedidosPendientes;
 import ventanas.Principal;
 
 /**
@@ -11,7 +14,8 @@ import ventanas.Principal;
  * @author Gisela, Elia y Achraf
  */
 public class Inicio extends javax.swing.JFrame {
-
+    
+    private String fotografia;
     /**
      * Creates new form Principal
      */
@@ -21,6 +25,7 @@ public class Inicio extends javax.swing.JFrame {
         initContenido();
         this.setLocationRelativeTo(null);
         this.setVisible(true);  
+        setLogo("src/main/java/imagenes/gato.jpeg");
     }
 
     private void initStyles(){
@@ -38,6 +43,20 @@ public class Inicio extends javax.swing.JFrame {
         contenido.revalidate();
         contenido.repaint();
     }
+    
+    public void setLogo(String fotografia) { 
+        this.fotografia = fotografia;
+        try {
+            logo.setSize(138, 128);
+            ImageIcon imagen = new ImageIcon(fotografia);
+            //Se redimensiona
+            ImageIcon imgRedimensionada = new ImageIcon(imagen.getImage().getScaledInstance(logo.getWidth(),logo.getHeight(), 1));
+            logo.setIcon(imgRedimensionada);            
+        } catch (Exception e) {
+            System.out.println("Error: " + e.toString());
+        }
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,16 +77,15 @@ public class Inicio extends javax.swing.JFrame {
         cabecera = new javax.swing.JPanel();
         mensaje = new javax.swing.JLabel();
         contenido = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
-        fondo.setPreferredSize(new java.awt.Dimension(1024, 640));
+        fondo.setPreferredSize(new java.awt.Dimension(1064, 640));
 
         menu.setBackground(new java.awt.Color(94, 57, 21));
         menu.setPreferredSize(new java.awt.Dimension(270, 640));
-
-        logo.setText("Logo");
 
         BotonPrincipal.setBackground(new java.awt.Color(94, 57, 21));
         BotonPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -142,22 +160,22 @@ public class Inicio extends javax.swing.JFrame {
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 72, Short.MAX_VALUE))
-            .addComponent(BotonPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonPedididosP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonFidelizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(menuLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
+            .addComponent(BotonPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(BotonPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,7 +183,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(BotonPedididosP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonFidelizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BotonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -181,16 +199,16 @@ public class Inicio extends javax.swing.JFrame {
         cabeceraLayout.setHorizontalGroup(
             cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cabeceraLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-                .addGap(390, 390, 390))
+                .addGap(27, 27, 27)
+                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(403, 403, 403))
         );
         cabeceraLayout.setVerticalGroup(
             cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cabeceraLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                .addGap(51, 51, 51))
+                .addGap(71, 71, 71)
+                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(84, 84, 84))
         );
 
         contenido.setBackground(new java.awt.Color(255, 255, 255));
@@ -203,7 +221,20 @@ public class Inicio extends javax.swing.JFrame {
         );
         contenidoLayout.setVerticalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
@@ -213,23 +244,28 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(fondoLayout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
-                    .addComponent(cabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+                        .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
-            .addComponent(cabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +288,14 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonAltaActionPerformed
 
     private void BotonFidelizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFidelizacionActionPerformed
-        // TODO add your handling code here:
+        Fidelizacion f1 = new Fidelizacion();
+        f1.setSize(800, 490);
+        f1.setLocation(0,0);
+        
+        contenido.removeAll();
+        contenido.add(f1, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
     }//GEN-LAST:event_BotonFidelizacionActionPerformed
 
     private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
@@ -260,7 +303,14 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonSalirActionPerformed
 
     private void BotonPedididosPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPedididosPActionPerformed
-       
+        PedidosPendientes p1 = new PedidosPendientes();
+        p1.setSize(800, 490);
+        p1.setLocation(0,0);
+        
+        contenido.removeAll();
+        contenido.add(p1, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
     }//GEN-LAST:event_BotonPedididosPActionPerformed
 
     private void BotonPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPrincipalActionPerformed
@@ -298,6 +348,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel cabecera;
     private javax.swing.JPanel contenido;
     private javax.swing.JPanel fondo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel mensaje;
     private javax.swing.JPanel menu;
