@@ -15,6 +15,11 @@ public class Principal extends javax.swing.JPanel {
      */
     public Principal() {
         initComponents();
+        initStyles();
+    }
+    
+    public void initStyles(){
+        Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
     }
 
     /**
@@ -27,37 +32,38 @@ public class Principal extends javax.swing.JPanel {
     private void initComponents() {
 
         fondo = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(754, 490));
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setPreferredSize(new java.awt.Dimension(800, 490));
 
-        jLabel2.setText("hola :3");
+        Titulo.setForeground(new java.awt.Color(94, 57, 21));
+        Titulo.setText("hola :3");
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(320, 320, 320)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                .addGap(320, 320, 320))
+                .addGap(325, 325, 325)
+                .addComponent(Titulo)
+                .addContainerGap(393, Short.MAX_VALUE))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(206, 206, 206)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                .addGap(235, 235, 235))
+                .addGap(53, 53, 53)
+                .addComponent(Titulo)
+                .addContainerGap(421, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,7 +73,7 @@ public class Principal extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Titulo;
     private javax.swing.JPanel fondo;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

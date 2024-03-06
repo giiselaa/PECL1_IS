@@ -4,6 +4,9 @@
  */
 package ventanas;
 
+import javax.swing.SwingUtilities;
+import presentacion.Inicio;
+
 /**
  *
  * @author giise
@@ -20,7 +23,7 @@ public class Fidelizacion extends javax.swing.JPanel {
     
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
-        ListaAdheridos.putClientProperty( "FlatLaf.style", "font: bold $h1.regular.font");
+        //ListaAdheridos.putClientProperty( "FlatLaf.style", "font: bold $h1.regular.font");
         BotonAlta.putClientProperty( "JButton.buttonType", "roundRect" );
         BotonBaja.putClientProperty( "JButton.buttonType", "roundRect" );
     }
@@ -50,6 +53,8 @@ public class Fidelizacion extends javax.swing.JPanel {
         Titulo.setText("Programa de fidelización");
         Titulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        BotonAlta.setBackground(new java.awt.Color(150, 116, 83));
+        BotonAlta.setForeground(new java.awt.Color(255, 255, 255));
         BotonAlta.setText("Dar de alta fidelización");
         BotonAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +62,8 @@ public class Fidelizacion extends javax.swing.JPanel {
             }
         });
 
+        BotonBaja.setBackground(new java.awt.Color(150, 116, 83));
+        BotonBaja.setForeground(new java.awt.Color(255, 255, 255));
         BotonBaja.setText("Dar de baja fidelización");
         BotonBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,15 +137,21 @@ public class Fidelizacion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAltaActionPerformed
-        DarAltaFidelizacion da = new DarAltaFidelizacion();
-        da.setVisible(true);
-        da.setLocationRelativeTo(null);
+        DarAltaFidelizacion da= new DarAltaFidelizacion();
+        da.setSize(800, 490);
+        da.setLocation(0,0);
+        
+        Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+        inicio.cambiarContenido(da);
     }//GEN-LAST:event_BotonAltaActionPerformed
 
     private void BotonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBajaActionPerformed
         DarBajaFidelizacion db = new DarBajaFidelizacion();
-        db.setVisible(true);
-        db.setLocationRelativeTo(null);
+        db.setSize(800,490);
+        db.setLocation(0,0);
+        
+        Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+        inicio.cambiarContenido(db);
     }//GEN-LAST:event_BotonBajaActionPerformed
 
 

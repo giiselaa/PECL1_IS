@@ -4,8 +4,13 @@ package presentacion;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import ventanas.ConsultaCliente;
+import ventanas.ConsultaLibro;
 import ventanas.DarAlta;
 import ventanas.Fidelizacion;
+import ventanas.InicioSesion;
 import ventanas.PedidosPendientes;
 import ventanas.Principal;
 
@@ -25,7 +30,7 @@ public class Inicio extends javax.swing.JFrame {
         initContenido();
         this.setLocationRelativeTo(null);
         this.setVisible(true);  
-        setLogo("src/main/java/imagenes/gato.jpeg");
+        setLogo("src/main/java/imagenes/TL3.png");
     }
 
     private void initStyles(){
@@ -47,7 +52,7 @@ public class Inicio extends javax.swing.JFrame {
     public void setLogo(String fotografia) { 
         this.fotografia = fotografia;
         try {
-            logo.setSize(138, 128);
+            logo.setSize(112, 112);
             ImageIcon imagen = new ImageIcon(fotografia);
             //Se redimensiona
             ImageIcon imgRedimensionada = new ImageIcon(imagen.getImage().getScaledInstance(logo.getWidth(),logo.getHeight(), 1));
@@ -57,6 +62,16 @@ public class Inicio extends javax.swing.JFrame {
         }
     }
         
+    /**
+     * método para cambiar el contenido del panel "contenido" desde otras clases
+     * @param nuevoContenido 
+     */
+    public void cambiarContenido(JPanel nuevoContenido) {
+        contenido.removeAll();
+        contenido.add(nuevoContenido, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,6 +89,8 @@ public class Inicio extends javax.swing.JFrame {
         BotonPedididosP = new javax.swing.JButton();
         BotonFidelizacion = new javax.swing.JButton();
         BotonSalir = new javax.swing.JButton();
+        BotonConsulta = new javax.swing.JButton();
+        BotonInforme = new javax.swing.JButton();
         cabecera = new javax.swing.JPanel();
         mensaje = new javax.swing.JLabel();
         contenido = new javax.swing.JPanel();
@@ -156,36 +173,70 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        BotonConsulta.setBackground(new java.awt.Color(94, 57, 21));
+        BotonConsulta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        BotonConsulta.setText("Consultas");
+        BotonConsulta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        BotonConsulta.setBorderPainted(false);
+        BotonConsulta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonConsulta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonConsultaActionPerformed(evt);
+            }
+        });
+
+        BotonInforme.setBackground(new java.awt.Color(94, 57, 21));
+        BotonInforme.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonInforme.setForeground(new java.awt.Color(255, 255, 255));
+        BotonInforme.setText("Realizar informe");
+        BotonInforme.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        BotonInforme.setBorderPainted(false);
+        BotonInforme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonInforme.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonInforme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonInformeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(BotonAlta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BotonPedididosP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BotonFidelizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BotonFidelizacion, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
             .addComponent(BotonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
             .addComponent(BotonPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BotonConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BotonInforme, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(menuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BotonPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotonPedididosP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotonFidelizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BotonConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BotonInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BotonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         cabecera.setBackground(new java.awt.Color(150, 116, 83));
@@ -251,7 +302,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
             .addGroup(fondoLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,7 +320,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
         );
 
         pack();
@@ -324,6 +375,52 @@ public class Inicio extends javax.swing.JFrame {
         contenido.repaint();
     }//GEN-LAST:event_BotonPrincipalActionPerformed
 
+    private void BotonConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonConsultaActionPerformed
+        Object[] options = {"cliente", "libro", "cancelar"};
+        int seleccion = JOptionPane.showOptionDialog(
+            this, // Componente padre (en este caso, el formulario actual)
+            "¿De qué desea consultar en histórico?",
+            "Selección de Ventana",
+            JOptionPane.YES_NO_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null, 
+            options, 
+            options[0]);
+
+    // Manejar la selección
+    if (seleccion == JOptionPane.YES_OPTION) {
+        ConsultaCliente cc = new ConsultaCliente();
+        cc.setSize(800, 490);
+        cc.setLocation(0,0);
+        
+        contenido.removeAll();
+        contenido.add(cc, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+        
+    } else if (seleccion == JOptionPane.NO_OPTION) {
+        ConsultaLibro cl = new ConsultaLibro();
+        cl.setSize(800, 490);
+        cl.setLocation(0,0);
+        
+        contenido.removeAll();
+        contenido.add(cl, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+    }
+    }//GEN-LAST:event_BotonConsultaActionPerformed
+
+    private void BotonInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInformeActionPerformed
+        InicioSesion is = new InicioSesion();
+        is.setSize(800, 490);
+        is.setLocation(0,0);
+        
+        contenido.removeAll();
+        contenido.add(is, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_BotonInformeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -341,7 +438,9 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonAlta;
+    private javax.swing.JButton BotonConsulta;
     private javax.swing.JButton BotonFidelizacion;
+    private javax.swing.JButton BotonInforme;
     private javax.swing.JButton BotonPedididosP;
     private javax.swing.JButton BotonPrincipal;
     private javax.swing.JButton BotonSalir;

@@ -15,8 +15,13 @@ public class DarAlta extends javax.swing.JPanel {
      */
     public DarAlta() {
         initComponents();
+        initStyles();
     }
 
+    public void initStyles(){
+        Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,30 +32,31 @@ public class DarAlta extends javax.swing.JPanel {
     private void initComponents() {
 
         fondo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 490));
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setPreferredSize(new java.awt.Dimension(800, 490));
 
-        jLabel1.setText("Dar Alta");
+        Titulo.setForeground(new java.awt.Color(94, 57, 21));
+        Titulo.setText("Dar de alta");
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(333, 333, 333)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(378, 378, 378))
+                .addContainerGap(343, Short.MAX_VALUE)
+                .addComponent(Titulo)
+                .addContainerGap(399, Short.MAX_VALUE))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(226, 226, 226)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(248, 248, 248))
+                .addGap(49, 49, 49)
+                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(425, 425, 425))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -67,7 +73,7 @@ public class DarAlta extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Titulo;
     private javax.swing.JPanel fondo;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
