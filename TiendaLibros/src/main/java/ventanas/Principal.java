@@ -4,6 +4,9 @@
  */
 package ventanas;
 
+import javax.swing.SwingUtilities;
+import presentacion.Inicio;
+
 /**
  *
  * @author giise
@@ -19,7 +22,8 @@ public class Principal extends javax.swing.JPanel {
     }
     
     public void initStyles(){
-        Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
+        //Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
+        BotonGenerarPedido.putClientProperty( "JButton.buttonType", "roundRect" );
     }
 
     /**
@@ -32,31 +36,37 @@ public class Principal extends javax.swing.JPanel {
     private void initComponents() {
 
         fondo = new javax.swing.JPanel();
-        Titulo = new javax.swing.JLabel();
+        BotonGenerarPedido = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(754, 490));
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setPreferredSize(new java.awt.Dimension(800, 490));
 
-        Titulo.setForeground(new java.awt.Color(94, 57, 21));
-        Titulo.setText("hola :3");
+        BotonGenerarPedido.setBackground(new java.awt.Color(150, 116, 83));
+        BotonGenerarPedido.setForeground(new java.awt.Color(255, 255, 255));
+        BotonGenerarPedido.setText("Generar pedido");
+        BotonGenerarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonGenerarPedidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(325, 325, 325)
-                .addComponent(Titulo)
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addGap(296, 296, 296)
+                .addComponent(BotonGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(325, Short.MAX_VALUE))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(Titulo)
-                .addContainerGap(421, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                .addContainerGap(383, Short.MAX_VALUE)
+                .addComponent(BotonGenerarPedido)
+                .addGap(84, 84, 84))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -71,9 +81,18 @@ public class Principal extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BotonGenerarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGenerarPedidoActionPerformed
+        GenerarPedido gp = new GenerarPedido();
+        gp.setSize(800, 490);
+        gp.setLocation(0,0);
+        
+        Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+        inicio.cambiarContenido(gp);
+    }//GEN-LAST:event_BotonGenerarPedidoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Titulo;
+    private javax.swing.JButton BotonGenerarPedido;
     private javax.swing.JPanel fondo;
     // End of variables declaration//GEN-END:variables
 }
