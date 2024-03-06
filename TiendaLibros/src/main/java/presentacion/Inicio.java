@@ -90,13 +90,8 @@ public class Inicio extends javax.swing.JFrame {
         BotonPrincipal.setBackground(new java.awt.Color(94, 57, 21));
         BotonPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-<<<<<<< HEAD
-        BotonPrincipal.setText("                Principal");
-        BotonPrincipal.setBorder(null);
-=======
         BotonPrincipal.setText("Principal");
         BotonPrincipal.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
->>>>>>> 44d2363e307fd99f99ed2090cb42091f409ebffd
         BotonPrincipal.setBorderPainted(false);
         BotonPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -109,13 +104,8 @@ public class Inicio extends javax.swing.JFrame {
         BotonAlta.setBackground(new java.awt.Color(94, 57, 21));
         BotonAlta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonAlta.setForeground(new java.awt.Color(255, 255, 255));
-<<<<<<< HEAD
-        BotonAlta.setText("             Dar de Alta");
-        BotonAlta.setBorder(null);
-=======
         BotonAlta.setText("Dar de Alta");
         BotonAlta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
->>>>>>> 44d2363e307fd99f99ed2090cb42091f409ebffd
         BotonAlta.setBorderPainted(false);
         BotonAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonAlta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -128,13 +118,8 @@ public class Inicio extends javax.swing.JFrame {
         BotonPedididosP.setBackground(new java.awt.Color(94, 57, 21));
         BotonPedididosP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonPedididosP.setForeground(new java.awt.Color(255, 255, 255));
-<<<<<<< HEAD
-        BotonPedididosP.setText("        Pedidos Pendientes");
-        BotonPedididosP.setBorder(null);
-=======
         BotonPedididosP.setText("Pedidos Pendientes");
         BotonPedididosP.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
->>>>>>> 44d2363e307fd99f99ed2090cb42091f409ebffd
         BotonPedididosP.setBorderPainted(false);
         BotonPedididosP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonPedididosP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -147,13 +132,8 @@ public class Inicio extends javax.swing.JFrame {
         BotonFidelizacion.setBackground(new java.awt.Color(94, 57, 21));
         BotonFidelizacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonFidelizacion.setForeground(new java.awt.Color(255, 255, 255));
-<<<<<<< HEAD
-        BotonFidelizacion.setText("    Programa de fidelización");
-        BotonFidelizacion.setBorder(null);
-=======
         BotonFidelizacion.setText("Programa de fidelización");
         BotonFidelizacion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
->>>>>>> 44d2363e307fd99f99ed2090cb42091f409ebffd
         BotonFidelizacion.setBorderPainted(false);
         BotonFidelizacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonFidelizacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
