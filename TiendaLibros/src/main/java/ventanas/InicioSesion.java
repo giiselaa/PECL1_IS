@@ -4,6 +4,11 @@
  */
 package ventanas;
 
+import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import presentacion.Inicio;
+
 /**
  *
  * @author giise
@@ -112,7 +117,29 @@ public class InicioSesion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVerificarActionPerformed
-        // TODO add your handling code here:
+        if ("Responsable".equals(TextFieldUsuario.getText()) && "Responsable".equals(new String((TextFieldContrasenna.getPassword())))){
+            JOptionPane.showMessageDialog(this, "Los datos introducidos son correctos", "Acceso responsable", JOptionPane.INFORMATION_MESSAGE);
+            Object[] options = {"consultar informe", "realizar informe", "cancelar"};
+            int seleccion = JOptionPane.showOptionDialog(this,"¿Qué desea hacer?","Selección",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null, options, options[0]);
+            if (seleccion == 0){
+                ConsultarInforme ci = new ConsultarInforme();
+                ci.setSize(800,490);
+                ci.setLocation(0,0);
+        
+                Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+                inicio.cambiarContenido(ci);
+            }else if (seleccion == 1){
+                RealizarInforme ri = new RealizarInforme();
+                ri.setSize(800,490);
+                ri.setLocation(0,0);
+        
+                Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+                inicio.cambiarContenido(ri);      
+        }else if("Empleado".equals(TextFieldUsuario.getText()) && "Empleado".equals(new String((TextFieldContrasenna.getPassword())))){
+            JOptionPane.showMessageDialog(this, "Usted no puede acceder a esta zona de la aplicación", "Acceso restringido", JOptionPane.ERROR_MESSAGE);
+        }}else{
+            JOptionPane.showMessageDialog(this, "Los datos introducidos no son correctos, por favor vuelva a comprobarlos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BotonVerificarActionPerformed
 
 

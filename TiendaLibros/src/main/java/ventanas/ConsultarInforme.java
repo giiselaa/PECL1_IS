@@ -4,25 +4,17 @@
  */
 package ventanas;
 
-import javax.swing.SwingUtilities;
-import presentacion.Inicio;
-
 /**
  *
  * @author giise
  */
-public class DarBajaFidelizacion extends javax.swing.JPanel {
+public class ConsultarInforme extends javax.swing.JPanel {
 
     /**
-     * Creates new form DarBajaFidelizacion
+     * Creates new form ConsultarInforme
      */
-    public DarBajaFidelizacion() {
+    public ConsultarInforme() {
         initComponents();
-        initStyles();
-    }
-    
-    public void initStyles(){
-        Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
     }
 
     /**
@@ -35,22 +27,19 @@ public class DarBajaFidelizacion extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BotonVolver = new javax.swing.JButton();
-        Titulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        BotonVolver.setBackground(new java.awt.Color(150, 116, 83));
-        BotonVolver.setForeground(new java.awt.Color(255, 255, 255));
-        BotonVolver.setText("Volver");
-        BotonVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonVolverActionPerformed(evt);
-            }
-        });
+        jLabel1.setForeground(new java.awt.Color(94, 57, 21));
+        jLabel1.setText("Consultar informe de estado de cuentas");
 
-        Titulo.setForeground(new java.awt.Color(94, 57, 21));
-        Titulo.setText("Dar de baja fidelización");
+        jLabel2.setText("Introduzca el mes que desea consultar:");
+
+        jButton1.setText("Buscar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,21 +48,28 @@ public class DarBajaFidelizacion extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(BotonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(132, 132, 132)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(Titulo)))
-                .addContainerGap(444, Short.MAX_VALUE))
+                        .addGap(79, 79, 79)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(Titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 365, Short.MAX_VALUE)
-                .addComponent(BotonVolver)
-                .addGap(39, 39, 39))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(360, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -88,19 +84,12 @@ public class DarBajaFidelizacion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVolverActionPerformed
-        Fidelizacion f1 = new Fidelizacion();
-        f1.setSize(800,490);
-        f1.setLocation(0,0);
-
-        Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
-        inicio.cambiarContenido(f1);
-    }//GEN-LAST:event_BotonVolverActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonVolver;
-    private javax.swing.JLabel Titulo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

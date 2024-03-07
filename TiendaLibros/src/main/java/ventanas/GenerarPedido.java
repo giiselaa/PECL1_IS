@@ -5,6 +5,7 @@
 package ventanas;
 
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import presentacion.Inicio;
 
@@ -21,6 +22,7 @@ public class GenerarPedido extends javax.swing.JPanel {
     public GenerarPedido() {
         initComponents();
         initStyles();
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
     public void initStyles(){

@@ -387,8 +387,8 @@ public class Inicio extends javax.swing.JFrame {
             options, 
             options[0]);
 
-    // Manejar la selección
-    if (seleccion == JOptionPane.YES_OPTION) {
+        
+    if (seleccion == 0) {
         ConsultaCliente cc = new ConsultaCliente();
         cc.setSize(800, 490);
         cc.setLocation(0,0);
@@ -398,7 +398,7 @@ public class Inicio extends javax.swing.JFrame {
         contenido.revalidate();
         contenido.repaint();
         
-    } else if (seleccion == JOptionPane.NO_OPTION) {
+    } else if (seleccion == 1) {
         ConsultaLibro cl = new ConsultaLibro();
         cl.setSize(800, 490);
         cl.setLocation(0,0);

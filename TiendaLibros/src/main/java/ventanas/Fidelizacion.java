@@ -25,7 +25,6 @@ public class Fidelizacion extends javax.swing.JPanel {
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
         //ListaAdheridos.putClientProperty( "FlatLaf.style", "font: bold $h1.regular.font");
         BotonAlta.putClientProperty( "JButton.buttonType", "roundRect" );
-        BotonBaja.putClientProperty( "JButton.buttonType", "roundRect" );
     }
 
     /**
@@ -40,10 +39,10 @@ public class Fidelizacion extends javax.swing.JPanel {
         fondo = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         BotonAlta = new javax.swing.JButton();
-        BotonBaja = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaAdheridos = new javax.swing.JList<>();
         TituloLista = new javax.swing.JLabel();
+        BotonSeleccionar = new javax.swing.JButton();
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setPreferredSize(new java.awt.Dimension(800, 490));
@@ -62,15 +61,6 @@ public class Fidelizacion extends javax.swing.JPanel {
             }
         });
 
-        BotonBaja.setBackground(new java.awt.Color(150, 116, 83));
-        BotonBaja.setForeground(new java.awt.Color(255, 255, 255));
-        BotonBaja.setText("Dar de baja fidelización");
-        BotonBaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBajaActionPerformed(evt);
-            }
-        });
-
         ListaAdheridos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -80,6 +70,13 @@ public class Fidelizacion extends javax.swing.JPanel {
         jScrollPane1.setViewportView(ListaAdheridos);
 
         TituloLista.setText("Lista de adheridos al programa:");
+
+        BotonSeleccionar.setText("Seleccionar");
+        BotonSeleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonSeleccionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
@@ -94,34 +91,28 @@ public class Fidelizacion extends javax.swing.JPanel {
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addComponent(TituloLista)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(fondoLayout.createSequentialGroup()
-                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(fondoLayout.createSequentialGroup()
-                                .addComponent(BotonAlta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
-                                .addComponent(BotonBaja)))
-                        .addGap(121, 121, 121))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                        .addComponent(BotonSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                        .addComponent(BotonAlta)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(121, 121, 121))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addGap(58, 58, 58)
-                .addComponent(TituloLista)
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TituloLista)
+                    .addComponent(BotonSeleccionar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(fondoLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(BotonBaja)
-                        .addGap(104, 104, 104))
-                    .addGroup(fondoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotonAlta)
-                        .addGap(95, 95, 95))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(BotonAlta)
+                .addGap(95, 95, 95))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -145,19 +136,14 @@ public class Fidelizacion extends javax.swing.JPanel {
         inicio.cambiarContenido(da);
     }//GEN-LAST:event_BotonAltaActionPerformed
 
-    private void BotonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBajaActionPerformed
-        DarBajaFidelizacion db = new DarBajaFidelizacion();
-        db.setSize(800,490);
-        db.setLocation(0,0);
-        
-        Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
-        inicio.cambiarContenido(db);
-    }//GEN-LAST:event_BotonBajaActionPerformed
+    private void BotonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSeleccionarActionPerformed
+        // cuando seleccione que pueda ver los datos y dar de baja
+    }//GEN-LAST:event_BotonSeleccionarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonAlta;
-    private javax.swing.JButton BotonBaja;
+    private javax.swing.JButton BotonSeleccionar;
     private javax.swing.JList<String> ListaAdheridos;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel TituloLista;
