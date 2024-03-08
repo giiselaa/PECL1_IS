@@ -4,6 +4,9 @@
  */
 package ventanas;
 
+import javax.swing.SwingUtilities;
+import presentacion.Inicio;
+
 /**
  *
  * @author giise
@@ -20,6 +23,8 @@ public class PedidosPendientes extends javax.swing.JPanel {
     
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
+        BotonCancelar.putClientProperty( "JButton.buttonType", "roundRect" );
+        BotonRealizar.putClientProperty( "JButton.buttonType", "roundRect" );
     }
 
     /**
@@ -33,11 +38,41 @@ public class PedidosPendientes extends javax.swing.JPanel {
 
         fondo = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        BotonRealizar = new javax.swing.JButton();
+        BotonCancelar = new javax.swing.JButton();
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
 
         Titulo.setForeground(new java.awt.Color(94, 57, 21));
         Titulo.setText("Pedidos pendientes");
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(jList1);
+
+        BotonRealizar.setBackground(new java.awt.Color(150, 116, 83));
+        BotonRealizar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonRealizar.setText("Realizar pedido");
+        BotonRealizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRealizarActionPerformed(evt);
+            }
+        });
+
+        BotonCancelar.setBackground(new java.awt.Color(150, 116, 83));
+        BotonCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonCancelar.setText("Cancelar pedido");
+        BotonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
@@ -47,13 +82,29 @@ public class PedidosPendientes extends javax.swing.JPanel {
                 .addContainerGap(327, Short.MAX_VALUE)
                 .addComponent(Titulo)
                 .addContainerGap(368, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(118, 118, 118))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(BotonRealizar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(Titulo)
-                .addContainerGap(428, Short.MAX_VALUE))
+                .addGap(67, 67, 67)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonRealizar)
+                    .addComponent(BotonCancelar))
+                .addGap(78, 78, 78))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -68,9 +119,26 @@ public class PedidosPendientes extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
+        // eliminar pedido del array en el que estarán y actualizar lista
+    }//GEN-LAST:event_BotonCancelarActionPerformed
+
+    private void BotonRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRealizarActionPerformed
+        Principal p1= new Principal();
+        p1.setSize(800, 490);
+        p1.setLocation(0,0);
+        
+        Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+        inicio.cambiarContenido(p1);
+    }//GEN-LAST:event_BotonRealizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCancelar;
+    private javax.swing.JButton BotonRealizar;
     private javax.swing.JLabel Titulo;
     private javax.swing.JPanel fondo;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

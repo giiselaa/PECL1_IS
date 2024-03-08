@@ -13,12 +13,12 @@ import presentacion.Inicio;
  *
  * @author giise
  */
-public class InicioSesion extends javax.swing.JPanel {
+public class InicioSesionInformes extends javax.swing.JPanel {
 
     /**
      * Creates new form InicioSesion
      */
-    public InicioSesion() {
+    public InicioSesionInformes() {
         initComponents();
         initStyles();
     }

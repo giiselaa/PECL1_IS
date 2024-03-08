@@ -10,7 +10,8 @@ import ventanas.ConsultaCliente;
 import ventanas.ConsultaLibro;
 import ventanas.DarAlta;
 import ventanas.Fidelizacion;
-import ventanas.InicioSesion;
+import ventanas.InicioSesionAlta;
+import ventanas.InicioSesionInformes;
 import ventanas.PedidosPendientes;
 import ventanas.Principal;
 
@@ -30,7 +31,7 @@ public class Inicio extends javax.swing.JFrame {
         initContenido();
         this.setLocationRelativeTo(null);
         this.setVisible(true);  
-        setLogo("src/main/java/imagenes/TL3.png");
+        setLogo("src/main/java/imagenes/LOGOREDSGN.png");
     }
 
     private void initStyles(){
@@ -190,7 +191,7 @@ public class Inicio extends javax.swing.JFrame {
         BotonInforme.setBackground(new java.awt.Color(94, 57, 21));
         BotonInforme.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonInforme.setForeground(new java.awt.Color(255, 255, 255));
-        BotonInforme.setText("Realizar informe");
+        BotonInforme.setText("Informes");
         BotonInforme.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         BotonInforme.setBorderPainted(false);
         BotonInforme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -328,12 +329,12 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAltaActionPerformed
-        DarAlta p2 = new DarAlta();
-        p2.setSize(800, 490);
-        p2.setLocation(0,0);
+        InicioSesionAlta isa = new InicioSesionAlta();
+        isa.setSize(800, 490);
+        isa.setLocation(0,0);
         
         contenido.removeAll();
-        contenido.add(p2, BorderLayout.CENTER);
+        contenido.add(isa, BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
     }//GEN-LAST:event_BotonAltaActionPerformed
@@ -411,12 +412,12 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonConsultaActionPerformed
 
     private void BotonInformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInformeActionPerformed
-        InicioSesion is = new InicioSesion();
-        is.setSize(800, 490);
-        is.setLocation(0,0);
+        InicioSesionInformes isi = new InicioSesionInformes();
+        isi.setSize(800, 490);
+        isi.setLocation(0,0);
         
         contenido.removeAll();
-        contenido.add(is, BorderLayout.CENTER);
+        contenido.add(isi, BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
     }//GEN-LAST:event_BotonInformeActionPerformed

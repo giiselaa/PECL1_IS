@@ -4,6 +4,8 @@
  */
 package ventanas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author giise
@@ -20,6 +22,8 @@ public class DarAlta extends javax.swing.JPanel {
 
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
+        BotonCancelar.putClientProperty( "JButton.buttonType", "roundRect" );
+        BotonGuardar.putClientProperty( "JButton.buttonType", "roundRect" );
     }
     
     /**
@@ -33,6 +37,9 @@ public class DarAlta extends javax.swing.JPanel {
 
         fondo = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        BotonCancelar = new javax.swing.JButton();
+        BotonGuardar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(800, 490));
 
@@ -42,21 +49,52 @@ public class DarAlta extends javax.swing.JPanel {
         Titulo.setForeground(new java.awt.Color(94, 57, 21));
         Titulo.setText("Dar de alta");
 
+        jLabel1.setText("Nombre:");
+
+        BotonCancelar.setBackground(new java.awt.Color(150, 116, 83));
+        BotonCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonCancelar.setText("Cancelar");
+        BotonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCancelarActionPerformed(evt);
+            }
+        });
+
+        BotonGuardar.setBackground(new java.awt.Color(150, 116, 83));
+        BotonGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonGuardar.setText("Guardar");
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addContainerGap(343, Short.MAX_VALUE)
-                .addComponent(Titulo)
-                .addContainerGap(399, Short.MAX_VALUE))
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addComponent(Titulo))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(fondoLayout.createSequentialGroup()
+                                .addComponent(BotonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 410, Short.MAX_VALUE)
+                                .addComponent(BotonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(75, 75, 75))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(425, 425, 425))
+                .addGap(44, 44, 44)
+                .addComponent(Titulo)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonCancelar)
+                    .addComponent(BotonGuardar))
+                .addGap(60, 60, 60))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -71,9 +109,19 @@ public class DarAlta extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
+        int opcion = JOptionPane.showConfirmDialog( this,"¿Está seguro de que desea cancelar la operación?","Confirmación",JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.YES_OPTION) {
+            //limpiar los datos que se hayan añadido
+        }
+    }//GEN-LAST:event_BotonCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCancelar;
+    private javax.swing.JButton BotonGuardar;
     private javax.swing.JLabel Titulo;
     private javax.swing.JPanel fondo;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -22,7 +22,7 @@ public class Principal extends javax.swing.JPanel {
     }
     
     public void initStyles(){
-        //Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
+        Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
         BotonGenerarPedido.putClientProperty( "JButton.buttonType", "roundRect" );
     }
 
@@ -37,6 +37,9 @@ public class Principal extends javax.swing.JPanel {
 
         fondo = new javax.swing.JPanel();
         BotonGenerarPedido = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaCatalogo = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(754, 490));
 
@@ -52,19 +55,47 @@ public class Principal extends javax.swing.JPanel {
             }
         });
 
+        Titulo.setForeground(new java.awt.Color(94, 57, 21));
+        Titulo.setText("Catálogo de libros disponibles:");
+
+        TablaCatalogo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Título", "Autor", "Código", "Stock"
+            }
+        ));
+        jScrollPane1.setViewportView(TablaCatalogo);
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(296, 296, 296)
-                .addComponent(BotonGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(BotonGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(Titulo)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                .addContainerGap(383, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
+                .addComponent(Titulo)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(BotonGenerarPedido)
                 .addGap(84, 84, 84))
         );
@@ -73,7 +104,7 @@ public class Principal extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,6 +124,9 @@ public class Principal extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonGenerarPedido;
+    private javax.swing.JTable TablaCatalogo;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JPanel fondo;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
