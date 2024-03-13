@@ -83,9 +83,9 @@ public class UtilTienda {
         int pos = Collections.binarySearch(clientes, u, IdproComp);
         if (pos >= 0) {
             objuser = clientes.get(pos);
-        } else {
+        } /*else {
             objuser = null;
-        }
+        }*/
         
         return objuser;
     }
@@ -94,7 +94,7 @@ public class UtilTienda {
      * @param cliente Cliente a dar de alta
      * @return true si se da de alta y false si no */
     public static boolean altaSocio(Socio cliente) {
-        if (consultaFidelizacion(cliente.getNumeroTarjeta())==null && consultaClienteId(cliente.getDni()) == null) {
+        if (consultaFidelizacion(cliente.getNumeroTarjeta())==null && consultaClienteId(cliente.getId()) == null) {
             socios.add(cliente);
             return true;
         } else {
