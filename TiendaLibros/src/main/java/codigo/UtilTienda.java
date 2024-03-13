@@ -90,7 +90,7 @@ public class UtilTienda {
      * @param cliente Cliente a dar de alta
      * @return true si se da de alta y false si no */
     public static boolean altaSocio(Socio cliente) {
-        if (consultaFidelizacion(cliente.getNumeroTarjeta())==null) {
+        if (consultaFidelizacion(cliente.getNumeroTarjeta())==null && consultaClienteId(cliente.getDni()) == null) {
             socios.add(cliente);
             return true;
         } else {
