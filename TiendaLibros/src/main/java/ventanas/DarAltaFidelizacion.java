@@ -4,6 +4,11 @@
  */
 package ventanas;
 
+import codigo.ClienteFidelizado;
+import codigo.Socio;
+import codigo.Subscriptor;
+import codigo.UtilTienda;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import presentacion.Inicio;
 
@@ -45,13 +50,11 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
         BotonSubscriptores = new javax.swing.JRadioButton();
         BotonSocios = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        numeroTarjeta = new javax.swing.JTextField();
         BotonAlta = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -73,36 +76,37 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
 
         jLabel1.setText("Tipo de fidelización: ");
 
-        jLabel2.setText("DNI del cliente: ");
-
-        jLabel3.setText("Nombre:");
-
         jLabel4.setText("Número de fidelización:");
 
         BotonAlta.setBackground(new java.awt.Color(150, 116, 83));
         BotonAlta.setForeground(new java.awt.Color(255, 255, 255));
         BotonAlta.setText("Dar de alta");
+        BotonAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAltaActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Id:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(259, 259, 259)
+                .addComponent(Titulo)
+                .addContainerGap(419, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(141, 141, 141)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(Titulo))
+                        .addComponent(BotonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(97, 97, 97)
@@ -110,16 +114,14 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
                                 .addGap(103, 103, 103)
                                 .addComponent(BotonSubscriptores))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(155, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(BotonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
+                                .addComponent(numeroTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(97, 97, 97))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,21 +133,17 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
                     .addComponent(BotonSubscriptores)
                     .addComponent(BotonSocios)
                     .addComponent(jLabel1))
-                .addGap(52, 52, 52)
+                .addGap(80, 80, 80)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                    .addComponent(numeroTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonVolver)
                     .addComponent(BotonAlta))
-                .addGap(61, 61, 61))
+                .addGap(87, 87, 87))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -169,6 +167,42 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
         inicio.cambiarContenido(f1);
     }//GEN-LAST:event_BotonVolverActionPerformed
 
+    private void BotonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAltaActionPerformed
+        /**
+         * hacer comprobaciones para que no se pueda tener el mismo numero id o tarjeta
+         */
+        
+        if(!BotonSocios.isSelected() & !BotonSubscriptores.isSelected()){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar el tipo de subscripción que desea");
+        }else if(id.getText().isEmpty() || numeroTarjeta.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");
+        }else{ 
+        if(BotonSocios.isSelected()){
+            Socio cliente = new Socio(Integer.parseInt(numeroTarjeta.getText()),0);
+            cliente.setId(id.getText());
+            if(UtilTienda.getClientesFidelizados().contains(cliente)){
+                JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
+            }else{
+            UtilTienda.altaSocio(cliente);}
+        }else if(BotonSubscriptores.isSelected()){
+            Subscriptor cliente = new Subscriptor(0,Integer.parseInt(numeroTarjeta.getText()),0);
+            cliente.setId(id.getText());
+            if(UtilTienda.getClientesFidelizados().contains(cliente)){
+                JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
+            }else{
+                UtilTienda.altaSubscriptor(cliente);
+        }}
+            
+            JOptionPane.showMessageDialog(this, "Se ha dado de alta la fidelización");
+            Principal p1 = new Principal();
+            p1.setSize(800, 490);
+            p1.setLocation(0,0);
+        
+            Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+            inicio.cambiarContenido(p1);
+        }
+    }//GEN-LAST:event_BotonAltaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonAlta;
@@ -177,13 +211,11 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
     private javax.swing.JButton BotonVolver;
     private javax.swing.JLabel Titulo;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField numeroTarjeta;
     // End of variables declaration//GEN-END:variables
 }

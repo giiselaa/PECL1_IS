@@ -4,18 +4,29 @@
  */
 package codigo;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author elia, Gisela y Achraf
+ * @author Elia, Gisela y Achraf
  */
 public class ClienteFidelizado extends Cliente{
     
     private int numeroTarjeta;
-    private int puntos;
-    private Date fechaAlta;
+    private int puntos = 0; //15% de cada compra
+    private LocalDate fechaAlta;
+    private String id = super.getId();
 
+    public ClienteFidelizado() {
+    }
+    
+    public ClienteFidelizado(int numeroTarjeta, int puntos) {
+        this.numeroTarjeta = numeroTarjeta;
+        this.puntos = puntos;
+        fechaAlta = LocalDate.now();
+    }
+    
     public int getNumeroTarjeta() {
         return numeroTarjeta;
     }
@@ -31,11 +42,15 @@ public class ClienteFidelizado extends Cliente{
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
-
-    public ClienteFidelizado(int numeroTarjeta, int puntos) {
-        this.numeroTarjeta = numeroTarjeta;
-        this.puntos = puntos;
-        fechaAlta = super.getFechaAlta();
+    
+    public String formatear(LocalDate fechaAlta){  
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fecha = fechaAlta.format(formato);
+        return fecha;
     }
 
+    @Override
+    public String toString() {
+        return "Id: " + id + ", numero de tarjeta: " + numeroTarjeta + ", puntos: " + puntos + ", fechaAlta: " + formatear(fechaAlta);
+    }  
 }

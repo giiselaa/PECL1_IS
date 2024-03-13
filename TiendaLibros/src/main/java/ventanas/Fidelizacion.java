@@ -4,6 +4,9 @@
  */
 package ventanas;
 
+import codigo.ClienteFidelizado;
+import codigo.UtilTienda;
+import javax.swing.DefaultListModel;
 import javax.swing.SwingUtilities;
 import presentacion.Inicio;
 
@@ -13,18 +16,31 @@ import presentacion.Inicio;
  */
 public class Fidelizacion extends javax.swing.JPanel {
 
+    DefaultListModel<String> model = new DefaultListModel<>();
+    
     /**
      * Creates new form Fidelizacion
      */
     public Fidelizacion() {
         initComponents();
         initStyles();
+        addClientesLista();
     }
     
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
         //ListaAdheridos.putClientProperty( "FlatLaf.style", "font: bold $h1.regular.font");
         BotonAlta.putClientProperty( "JButton.buttonType", "roundRect" );
+    }
+    
+    public void addClientesLista(){
+
+        for (ClienteFidelizado cliente : UtilTienda.getClientesFidelizados()) {
+            String texto = cliente.toString();
+            if(!model.contains(texto)){
+            model.addElement(texto);
+            }
+        }
     }
 
     /**
@@ -61,11 +77,7 @@ public class Fidelizacion extends javax.swing.JPanel {
             }
         });
 
-        ListaAdheridos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        ListaAdheridos.setModel(model);
         ListaAdheridos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(ListaAdheridos);
 

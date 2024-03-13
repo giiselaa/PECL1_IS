@@ -13,5 +13,5 @@ public class Socio extends ClienteFidelizado{
     public Socio(int numeroTarjeta, int puntos) {
         super(numeroTarjeta, puntos);
     }
-    
+
 }
