@@ -1,6 +1,7 @@
 
 package codigo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,6 +15,8 @@ public class Pedido {
     //dni cliente
     private Date fecha;
     private int numEjemplares;
+    
+    private ArrayList<Libro> listaLibrosPedidos = new ArrayList(); 
     
     
 }
