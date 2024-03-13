@@ -7,6 +7,8 @@ package ventanas;
 import codigo.Cliente;
 import codigo.UtilTienda;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import presentacion.Inicio;
 
 /**
  *
@@ -21,9 +23,6 @@ public class DarAlta extends javax.swing.JPanel {
         initComponents();
         initStyles();
     }
-    private String id;
-    private String nombre;
-    private String dni;
 
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
@@ -160,13 +159,25 @@ public class DarAlta extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonCancelarActionPerformed
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
-        dni = jTextField1.getText();
-        nombre = jTextField2.getText();
-        id = jTextField3.getText();
-        Cliente nuevo = new Cliente(id, dni, nombre);
-        UtilTienda.altaCliente(nuevo);
-        System.out.print("Se ha metido en lista");
         
+        String dni = jTextField1.getText();
+        String nombre = jTextField2.getText();
+        String id = jTextField3.getText();
+        
+        if(dni.isEmpty() || nombre.isEmpty() || id.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");
+        }else{
+            Cliente nuevo = new Cliente(id, dni, nombre);
+            UtilTienda.altaCliente(nuevo);
+            JOptionPane.showMessageDialog(this, "El cliente se ha dado de alta correctamente");
+            
+            Principal p1 = new Principal();
+            p1.setSize(800, 490);
+            p1.setLocation(0,0);
+        
+            Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+            inicio.cambiarContenido(p1);
+        }
         
     }//GEN-LAST:event_BotonGuardarActionPerformed
 

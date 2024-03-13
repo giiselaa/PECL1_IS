@@ -22,7 +22,11 @@ public class UtilTienda {
     private static ArrayList<ClienteFidelizado> socios = new ArrayList();
     private static Cliente objuser;
     private Map<Libro, Map<Socio, ArrayList<Resenna>>> resennasPorLibro = new HashMap<>();
-
+    
+    public static ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+    
     public static ArrayList<ClienteFidelizado> getClientesFidelizados() {
         for(ClienteFidelizado socio: socios){
             clientesFidelizados.add(socio);

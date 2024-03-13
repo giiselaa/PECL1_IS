@@ -4,6 +4,7 @@
  */
 package ventanas;
 
+import codigo.Cliente;
 import codigo.ClienteFidelizado;
 import codigo.UtilTienda;
 import javax.swing.DefaultListModel;
@@ -34,7 +35,7 @@ public class Fidelizacion extends javax.swing.JPanel {
     }
     
     public void addClientesLista(){
-
+ 
         for (ClienteFidelizado cliente : UtilTienda.getClientesFidelizados()) {
             String texto = cliente.toString();
             if(!model.contains(texto)){

@@ -4,10 +4,12 @@
  */
 package ventanas;
 
+import codigo.Cliente;
 import codigo.ClienteFidelizado;
 import codigo.Socio;
 import codigo.Subscriptor;
 import codigo.UtilTienda;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import presentacion.Inicio;
@@ -17,7 +19,7 @@ import presentacion.Inicio;
  * @author giise
  */
 public class DarAltaFidelizacion extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form DarAltaFidelizacion
      */
@@ -54,9 +56,7 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
         numeroTarjeta = new javax.swing.JTextField();
         BotonAlta = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        idTextF = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -91,8 +91,6 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
 
         jLabel5.setText("Id:");
 
-        jLabel2.setText("Dni del cliente:");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -118,15 +116,9 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
                                 .addGap(103, 103, 103)
                                 .addComponent(BotonSubscriptores))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField1))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idTextF, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -143,17 +135,13 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
                     .addComponent(BotonSubscriptores)
                     .addComponent(BotonSocios)
                     .addComponent(jLabel1))
-                .addGap(80, 80, 80)
+                .addGap(89, 89, 89)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(numeroTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonVolver)
                     .addComponent(BotonAlta))
@@ -186,21 +174,22 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
          * hacer comprobaciones para que no se pueda tener el mismo numero id o tarjeta
          */
         
+        if(UtilTienda.consultaClienteId(idTextF.getText()) != null){
         if(!BotonSocios.isSelected() & !BotonSubscriptores.isSelected()){
             JOptionPane.showMessageDialog(this, "Debe seleccionar el tipo de subscripción que desea");
-        }else if(id.getText().isEmpty() || numeroTarjeta.getText().isEmpty()){
+        }else if(idTextF.getText().isEmpty() || numeroTarjeta.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");
         }else{ 
             if(BotonSocios.isSelected()){
                 Socio cliente = new Socio(Integer.parseInt(numeroTarjeta.getText()),0);
-                cliente.setId(id.getText());
+                cliente.setId(idTextF.getText());
                 if(UtilTienda.getClientesFidelizados().contains(cliente)){
                     JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
                 }else{
                     UtilTienda.altaSocio(cliente);}
             }else if(BotonSubscriptores.isSelected()){
                 Subscriptor cliente = new Subscriptor(0,Integer.parseInt(numeroTarjeta.getText()),0);
-                cliente.setId(id.getText());
+                cliente.setId(idTextF.getText());
                 if(UtilTienda.getClientesFidelizados().contains(cliente)){
                     JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
                 }else{
@@ -215,7 +204,9 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
         
             Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
             inicio.cambiarContenido(p1);
-        }
+        }}else{
+            JOptionPane.showMessageDialog(this, "Debe de dar de alta al cliente antes de poder dar de alta la fidelización");
+        } 
     }//GEN-LAST:event_BotonAltaActionPerformed
 
 
@@ -226,13 +217,11 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
     private javax.swing.JButton BotonVolver;
     private javax.swing.JLabel Titulo;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JTextField id;
+    private javax.swing.JTextField idTextF;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField numeroTarjeta;
     // End of variables declaration//GEN-END:variables
 }
