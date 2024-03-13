@@ -38,7 +38,7 @@ public class Fidelizacion extends javax.swing.JPanel {
         for (ClienteFidelizado cliente : UtilTienda.getClientesFidelizados()) {
             String texto = cliente.toString();
             if(!model.contains(texto)){
-            model.addElement(texto);
+                model.addElement(texto);
             }
         }
     }

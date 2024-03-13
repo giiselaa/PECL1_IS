@@ -177,21 +177,22 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
         }else if(id.getText().isEmpty() || numeroTarjeta.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");
         }else{ 
-        if(BotonSocios.isSelected()){
-            Socio cliente = new Socio(Integer.parseInt(numeroTarjeta.getText()),0);
-            cliente.setId(id.getText());
-            if(UtilTienda.getClientesFidelizados().contains(cliente)){
-                JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
-            }else{
-            UtilTienda.altaSocio(cliente);}
-        }else if(BotonSubscriptores.isSelected()){
-            Subscriptor cliente = new Subscriptor(0,Integer.parseInt(numeroTarjeta.getText()),0);
-            cliente.setId(id.getText());
-            if(UtilTienda.getClientesFidelizados().contains(cliente)){
-                JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
-            }else{
-                UtilTienda.altaSubscriptor(cliente);
-        }}
+            if(BotonSocios.isSelected()){
+                Socio cliente = new Socio(Integer.parseInt(numeroTarjeta.getText()),0);
+                cliente.setId(id.getText());
+                if(UtilTienda.getClientesFidelizados().contains(cliente)){
+                    JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
+                }else{
+                    UtilTienda.altaSocio(cliente);}
+            }else if(BotonSubscriptores.isSelected()){
+                Subscriptor cliente = new Subscriptor(0,Integer.parseInt(numeroTarjeta.getText()),0);
+                cliente.setId(id.getText());
+                if(UtilTienda.getClientesFidelizados().contains(cliente)){
+                    JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
+                }else{
+                    UtilTienda.altaSubscriptor(cliente);
+                }
+            }
             
             JOptionPane.showMessageDialog(this, "Se ha dado de alta la fidelización");
             Principal p1 = new Principal();

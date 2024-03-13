@@ -4,6 +4,7 @@
  */
 package codigo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,7 +14,8 @@ import java.util.Date;
 public class Subscriptor extends ClienteFidelizado{
     
     private int estrellas;
-    private Date fechaAlta;
+    private LocalDate fechaAlta;
+    
 
     public int getEstrellas() {
         return estrellas;
@@ -26,8 +28,9 @@ public class Subscriptor extends ClienteFidelizado{
     public Subscriptor(int estrellas, int numeroTarjeta, int puntos) {
         super(numeroTarjeta, puntos);
         this.estrellas = estrellas;
-        fechaAlta = super.getFechaAlta();
+        this.fechaAlta = super.getFechaAlta();
     }
+
     
     
 

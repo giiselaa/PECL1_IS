@@ -24,7 +24,7 @@ public class ClienteFidelizado extends Cliente{
     public ClienteFidelizado(int numeroTarjeta, int puntos) {
         this.numeroTarjeta = numeroTarjeta;
         this.puntos = puntos;
-        fechaAlta = LocalDate.now();
+        this.fechaAlta = LocalDate.now();
     }
     
     public int getNumeroTarjeta() {
@@ -41,6 +41,10 @@ public class ClienteFidelizado extends Cliente{
 
     public void setPuntos(int puntos) {
         this.puntos = puntos;
+    }
+    
+    public LocalDate getFechaAlta(){
+        return fechaAlta;
     }
     
     public String formatear(LocalDate fechaAlta){  

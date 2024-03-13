@@ -12,17 +12,17 @@ public class Cliente {
     private String id;
     private String dni;
     private String nombre;
-    private Date fechaAlta;
+    
     
     public Cliente(){
         
     }
     
-    public Cliente(String id, String dni, String nombre, Date fechaAlta) {
+    public Cliente(String id, String dni, String nombre) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
-        this.fechaAlta = fechaAlta;
+        
     }
 
     public String getDni() {
@@ -49,14 +49,7 @@ public class Cliente {
         this.id = id;
     }
 
-    public Date getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void setFechaAlta() {
-        Date fechaActual = new Date();
-        fechaAlta = fechaActual;
-    }
+    
 
 
 

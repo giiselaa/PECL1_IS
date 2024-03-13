@@ -4,6 +4,8 @@
  */
 package ventanas;
 
+import codigo.Cliente;
+import codigo.UtilTienda;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,9 @@ public class DarAlta extends javax.swing.JPanel {
         initComponents();
         initStyles();
     }
+    private String id;
+    private String nombre;
+    private String dni;
 
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
@@ -44,6 +49,7 @@ public class DarAlta extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(800, 490));
 
@@ -67,6 +73,11 @@ public class DarAlta extends javax.swing.JPanel {
         BotonGuardar.setBackground(new java.awt.Color(150, 116, 83));
         BotonGuardar.setForeground(new java.awt.Color(255, 255, 255));
         BotonGuardar.setText("Guardar");
+        BotonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonGuardarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("DNI del cliente: ");
 
@@ -91,14 +102,17 @@ public class DarAlta extends javax.swing.JPanel {
                             .addGroup(fondoLayout.createSequentialGroup()
                                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(fondoLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel1)
-                                    .addGroup(fondoLayout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(fondoLayout.createSequentialGroup()
+                                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel1))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(75, 75, 75))
         );
@@ -107,9 +121,11 @@ public class DarAlta extends javax.swing.JPanel {
             .addGroup(fondoLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(Titulo)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addGap(43, 43, 43)
+                .addGap(34, 34, 34)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -143,6 +159,17 @@ public class DarAlta extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BotonCancelarActionPerformed
 
+    private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
+        dni = jTextField1.getText();
+        nombre = jTextField2.getText();
+        id = jTextField3.getText();
+        Cliente nuevo = new Cliente(id, dni, nombre);
+        UtilTienda.altaCliente(nuevo);
+        System.out.print("Se ha metido en lista");
+        
+        
+    }//GEN-LAST:event_BotonGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCancelar;
@@ -154,5 +181,6 @@ public class DarAlta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
