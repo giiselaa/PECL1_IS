@@ -197,13 +197,20 @@ public class UtilTienda {
         resennasPorSocio.get(socio).add(nuevaResenna);
     }
     
-    public static ArrayList<Libro> getListaLibros(){
+    public static ArrayList<Libro> iniciarListaLibros(){
         Libro libro1 = new Libro(12345678, "Pepe", "frankenstein", 12);
         Libro libro2= new Libro(23456789, "Cervantes", "El Quijote", 13);
         Libro libro3 = new Libro(87654321, "Jose", "Dune", 18);
         listaLibros.add(libro1);
         listaLibros.add(libro2);
         listaLibros.add(libro3);
+        return listaLibros;
+    }
+    
+    public static ArrayList<Libro> getListaLibros(){
+        if (listaLibros.isEmpty()){
+            iniciarListaLibros();
+        }
         return listaLibros;
     }
     
