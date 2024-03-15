@@ -4,7 +4,11 @@
  */
 package ventanas;
 
+import codigo.Libro;
+import codigo.UtilTienda;
+import java.util.ArrayList;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 import presentacion.Inicio;
 
 /**
@@ -16,14 +20,39 @@ public class Principal extends javax.swing.JPanel {
     /**
      * Creates new form Principal
      */
+    DefaultTableModel dtmLibros = new DefaultTableModel();
+    ArrayList<Libro> listaLibros = new ArrayList();
+    
+    
     public Principal() {
         initComponents();
         initStyles();
+        IniciarTabla();
+    }
+    
+    
+    public void IniciarTabla(){
+        DefaultTableModel d = new DefaultTableModel();
+        TablaCatalogo.setModel(d);
+        Object[] datos = new Object[4];
+        String[] cabecera;
+        cabecera = new String[] {"Titulo", "Autor", "Codigo", "Stock"};
+        d.setColumnIdentifiers(cabecera);
+        listaLibros = UtilTienda.getListaLibros();
+ 
+        for(Libro libro : listaLibros) {
+            datos[0] = libro.getTitulo();     
+            datos[1] = libro.getAutor();
+            datos[2] = libro.getCodigoL();
+            datos[3] = libro.getStock();
+            d.addRow(datos);
+        }
     }
     
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
         BotonGenerarPedido.putClientProperty( "JButton.buttonType", "roundRect" );
+        
     }
 
     /**
@@ -60,6 +89,7 @@ public class Principal extends javax.swing.JPanel {
 
         TablaCatalogo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -104,7 +134,7 @@ public class Principal extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

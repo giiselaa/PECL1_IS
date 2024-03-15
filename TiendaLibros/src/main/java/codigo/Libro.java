@@ -7,15 +7,31 @@ package codigo;
  */
 public class Libro {
     private long codigoL;
-    private int ejemplares;
+    private String autor;
     private String titulo;
     private int stock;
 
-    public Libro(long codigoL, int ejemplares, String titulo, int stock) {
+    public Libro(long codigoL, String autor, String titulo, int stock) {
         this.codigoL = codigoL;
-        this.ejemplares = ejemplares;
+        this.autor = autor;
         this.titulo = titulo;
         this.stock = stock;
+    }
+    
+    public void setCodigoL(long codigoL){
+        this.codigoL = codigoL;
+    }
+    
+    public long getCodigoL(){
+        return this.codigoL;
+    }
+    
+    public String getTitulo(){
+        return this.titulo;
+    }
+    
+    public String getAutor(){
+        return this.autor;
     }
     
     public void actualizarStock(int stock){

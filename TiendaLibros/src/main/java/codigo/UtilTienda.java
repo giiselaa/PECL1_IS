@@ -20,6 +20,7 @@ public class UtilTienda {
     private static ArrayList<ClienteFidelizado> clientesFidelizados = new ArrayList();
     private static ArrayList<ClienteFidelizado> subscriptores = new ArrayList();
     private static ArrayList<ClienteFidelizado> socios = new ArrayList();
+    private static ArrayList<Libro> listaLibros = new ArrayList();
     private static Cliente objuser;
     private Map<Libro, Map<Socio, ArrayList<Resenna>>> resennasPorLibro = new HashMap<>();
     
@@ -194,6 +195,16 @@ public class UtilTienda {
         //crear nueva resenna 
         Resenna nuevaResenna = new Resenna(opinion, valoracion);
         resennasPorSocio.get(socio).add(nuevaResenna);
+    }
+    
+    public static ArrayList<Libro> getListaLibros(){
+        Libro libro1 = new Libro(12345678, "Pepe", "frankenstein", 12);
+        Libro libro2= new Libro(23456789, "Cervantes", "El Quijote", 13);
+        Libro libro3 = new Libro(87654321, "Jose", "Dune", 18);
+        listaLibros.add(libro1);
+        listaLibros.add(libro2);
+        listaLibros.add(libro3);
+        return listaLibros;
     }
     
 }
