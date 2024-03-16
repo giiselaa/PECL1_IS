@@ -9,9 +9,11 @@ package codigo;
  * @author elia, Gisela y Achraf
  */
 public class Socio extends ClienteFidelizado{
-    
-    public Socio(int numeroTarjeta, int puntos) {
-        super(numeroTarjeta, puntos);
+
+    public Socio(int numeroTarjeta, int puntos, String id, String dni, String nombre) {
+        super(numeroTarjeta, puntos, id, dni, nombre);
     }
+    
+    
 
 }

@@ -4,9 +4,13 @@
  */
 package ventanas;
 
+import codigo.Libro;
+import codigo.UtilTienda;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 import presentacion.Inicio;
 
 
@@ -22,12 +26,31 @@ public class GenerarPedido extends javax.swing.JPanel {
     public GenerarPedido() {
         initComponents();
         initStyles();
-        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        Tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        IniciarTabla();
     }
 
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
         BotonGenerarFactura.putClientProperty( "JButton.buttonType", "roundRect" );
+    }
+    
+    ArrayList<Libro> listaLibros;
+    
+    public void IniciarTabla(){
+        DefaultTableModel d = new DefaultTableModel();
+        Tabla.setModel(d);
+        Object[] datos = new Object[2];
+        String[] cabecera;
+        cabecera = new String[] {"Titulo", "Codigo"};
+        d.setColumnIdentifiers(cabecera);
+        listaLibros = UtilTienda.getListaLibros();
+ 
+        for(Libro libro : listaLibros) {
+            datos[0] = libro.getTitulo();     
+            datos[1] = libro.getCodigoL();
+            d.addRow(datos);
+        }
     }
     
     /**
@@ -50,7 +73,7 @@ public class GenerarPedido extends javax.swing.JPanel {
         BotonSeleccionar = new javax.swing.JButton();
         BotonGenerarFactura = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla = new javax.swing.JTable();
         comentario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -85,8 +108,8 @@ public class GenerarPedido extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setAutoCreateRowSorter(true);
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -97,7 +120,7 @@ public class GenerarPedido extends javax.swing.JPanel {
                 "Título", "Código"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tabla);
 
         comentario.setBackground(new java.awt.Color(255, 255, 255));
         comentario.setForeground(new java.awt.Color(153, 153, 153));
@@ -218,6 +241,7 @@ public class GenerarPedido extends javax.swing.JPanel {
     private javax.swing.JButton BotonGenerarFactura;
     private javax.swing.JButton BotonSeleccionar;
     private javax.swing.JTextField CodigoPedido;
+    private javax.swing.JTable Tabla;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel comentario;
     private javax.swing.JTextField dniCliente;
@@ -228,7 +252,6 @@ public class GenerarPedido extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelCodigo;
     private javax.swing.JLabel jLabeldni;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

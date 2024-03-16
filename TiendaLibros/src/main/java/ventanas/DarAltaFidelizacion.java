@@ -173,38 +173,44 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
         /**
          * hacer comprobaciones para que no se pueda tener el mismo numero id o tarjeta
          */
+        Cliente c;
         
         if(UtilTienda.consultaClienteId(idTextF.getText()) != null){
-        if(!BotonSocios.isSelected() & !BotonSubscriptores.isSelected()){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar el tipo de subscripción que desea");
-        }else if(idTextF.getText().isEmpty() || numeroTarjeta.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");
-        }else{ 
-            if(BotonSocios.isSelected()){
-                Socio cliente = new Socio(Integer.parseInt(numeroTarjeta.getText()),0);
-                cliente.setId(idTextF.getText());
-                if(UtilTienda.getClientesFidelizados().contains(cliente)){
-                    JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
-                }else{
-                    UtilTienda.altaSocio(cliente);}
-            }else if(BotonSubscriptores.isSelected()){
-                Subscriptor cliente = new Subscriptor(0,Integer.parseInt(numeroTarjeta.getText()),0);
-                cliente.setId(idTextF.getText());
-                if(UtilTienda.getClientesFidelizados().contains(cliente)){
-                    JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
-                }else{
-                    UtilTienda.altaSubscriptor(cliente);
+            c = UtilTienda.consultaClienteId(idTextF.getText());
+            if(!BotonSocios.isSelected() & !BotonSubscriptores.isSelected()){
+                JOptionPane.showMessageDialog(this, "Debe seleccionar el tipo de subscripción que desea");
+            }else if(idTextF.getText().isEmpty() || numeroTarjeta.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");
+            }else{ 
+                if(BotonSocios.isSelected()){
+                    Socio cliente = new Socio(Integer.parseInt(numeroTarjeta.getText()),0, c.getId(), c.getDni(), c.getNombre());
+                    cliente.setId(idTextF.getText());
+                    if(UtilTienda.getClientesFidelizados().contains(cliente)){
+                        JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
+                    }else{
+                        UtilTienda.altaSocio(cliente);
+                        System.out.println("Cliente: " + cliente.getNombre());
+                    }
+                }else if(BotonSubscriptores.isSelected()){
+                    Subscriptor cliente = new Subscriptor(Integer.parseInt(numeroTarjeta.getText()), 0, c.getId(), c.getDni(), c.getNombre());
+                    cliente.setId(idTextF.getText());
+                    if(UtilTienda.getClientesFidelizados().contains(cliente)){
+                        JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
+                    }else{
+                        UtilTienda.altaSubscriptor(cliente);
+                    }
                 }
+
+                JOptionPane.showMessageDialog(this, "Se ha dado de alta la fidelización");
+                
+                Principal p1 = new Principal();
+                p1.setSize(800, 490);
+                p1.setLocation(0,0);
+
+                Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+                inicio.cambiarContenido(p1);
             }
-            
-            JOptionPane.showMessageDialog(this, "Se ha dado de alta la fidelización");
-            Principal p1 = new Principal();
-            p1.setSize(800, 490);
-            p1.setLocation(0,0);
-        
-            Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
-            inicio.cambiarContenido(p1);
-        }}else{
+        }else{
             JOptionPane.showMessageDialog(this, "Debe de dar de alta al cliente antes de poder dar de alta la fidelización");
         } 
     }//GEN-LAST:event_BotonAltaActionPerformed

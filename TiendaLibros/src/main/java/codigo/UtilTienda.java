@@ -42,6 +42,7 @@ public class UtilTienda {
      * @param cliente Cliente a dar de alta
      * @return true si se da de alta y false si no */
     public static boolean altaCliente(Cliente cliente) {
+        
         if (consultaClienteId(cliente.getId())==null) {
             clientes.add(cliente);
             return true;
@@ -84,9 +85,9 @@ public class UtilTienda {
         int pos = Collections.binarySearch(clientes, u, IdproComp);
         if (pos >= 0) {
             objuser = clientes.get(pos);
-        } /*else {
+        } else {
             objuser = null;
-        }*/
+        }
         
         return objuser;
     }
