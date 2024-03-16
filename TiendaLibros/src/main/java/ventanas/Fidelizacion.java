@@ -4,23 +4,22 @@
  */
 package ventanas;
 
-import codigo.Cliente;
 import codigo.ClienteFidelizado;
-import codigo.Libro;
 import codigo.UtilTienda;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.SwingUtilities;
-import javax.swing.table.DefaultTableModel;
 import presentacion.Inicio;
 
 /**
  *
- * @author giise
+ * @author Elia, Gisela, Achraf
  */
 public class Fidelizacion extends javax.swing.JPanel {
 
     DefaultListModel<String> model = new DefaultListModel<>();
+    ArrayList<ClienteFidelizado> clientesFidelizados = UtilTienda.getClientesFidelizados();
+    ClienteFidelizado clienteSeleccionado;
     
     /**
      * Creates new form Fidelizacion
@@ -40,8 +39,8 @@ public class Fidelizacion extends javax.swing.JPanel {
     
     
     public void addClientesLista(){
- 
-        for (ClienteFidelizado cliente : UtilTienda.getClientesFidelizados()) {
+       
+        for (ClienteFidelizado cliente : clientesFidelizados) {
             String texto = cliente.toString();
             if(!model.contains(texto)){
                 model.addElement(texto);
@@ -65,8 +64,6 @@ public class Fidelizacion extends javax.swing.JPanel {
         ListaAdheridos = new javax.swing.JList<>();
         TituloLista = new javax.swing.JLabel();
         BotonSeleccionar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setPreferredSize(new java.awt.Dimension(800, 490));
@@ -98,63 +95,39 @@ public class Fidelizacion extends javax.swing.JPanel {
             }
         });
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tabla);
-
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(BotonAlta)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(fondoLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(114, 114, 114)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonAlta)
+                    .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(fondoLayout.createSequentialGroup()
+                            .addComponent(TituloLista)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotonSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(fondoLayout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(TituloLista)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 254, Short.MAX_VALUE)
-                        .addComponent(BotonSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(121, 121, 121))
+                        .addGap(133, 133, 133)
+                        .addComponent(Titulo)))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(26, 26, 26)
-                .addComponent(BotonAlta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(45, 45, 45)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(TituloLista)
                     .addComponent(BotonSeleccionar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(BotonAlta)
+                .addGap(149, 149, 149))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -165,7 +138,9 @@ public class Fidelizacion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,7 +154,13 @@ public class Fidelizacion extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonAltaActionPerformed
 
     private void BotonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSeleccionarActionPerformed
-        // cuando seleccione que pueda ver los datos y dar de baja
+        int seleccionado = ListaAdheridos.getSelectedIndex();
+        clienteSeleccionado = clientesFidelizados.get(seleccionado);
+
+        ConsultaFidelizacion cf = new ConsultaFidelizacion(clienteSeleccionado);
+        cf.setLocationRelativeTo(null);
+        cf.setVisible(true);
+
     }//GEN-LAST:event_BotonSeleccionarActionPerformed
 
 
@@ -191,7 +172,5 @@ public class Fidelizacion extends javax.swing.JPanel {
     private javax.swing.JLabel TituloLista;
     private javax.swing.JPanel fondo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

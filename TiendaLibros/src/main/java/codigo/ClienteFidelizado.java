@@ -16,8 +16,10 @@ public class ClienteFidelizado extends Cliente{
     private int numeroTarjeta;
     private int puntos = 0; //15% de cada compra
     private LocalDate fechaAlta;
-    //private String id;
-
+    private String id;
+    private String tipo;
+    private String nombre;
+            
     public ClienteFidelizado() {
     }
     
@@ -27,11 +29,12 @@ public class ClienteFidelizado extends Cliente{
         this.fechaAlta = LocalDate.now();
     }*/
 
-    public ClienteFidelizado(int numeroTarjeta, int puntos, String id, String dni, String nombre) {
+    public ClienteFidelizado(int numeroTarjeta, int puntos, String id, String dni, String nombre, String tipo) {
         super(id, dni, nombre);
         this.numeroTarjeta = numeroTarjeta;
         this.fechaAlta = LocalDate.now();
         this.puntos = puntos;
+        this.tipo = tipo;
     }
  
     
@@ -54,7 +57,31 @@ public class ClienteFidelizado extends Cliente{
     public LocalDate getFechaAlta(){
         return fechaAlta;
     }
-    
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String formatear(LocalDate fechaAlta){  
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String fecha = fechaAlta.format(formato);
@@ -63,6 +90,6 @@ public class ClienteFidelizado extends Cliente{
 
     @Override
     public String toString() {
-        return  " numero de tarjeta: " + numeroTarjeta + ", puntos: " + puntos + ", fechaAlta: " + formatear(fechaAlta);
+        return  "Nombre: " + nombre + ", id: " +id +", número de tarjeta: " + numeroTarjeta + ", puntos: " + puntos + ", fechaAlta: " + formatear(fechaAlta);
     }  
 }

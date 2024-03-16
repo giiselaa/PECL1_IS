@@ -5,11 +5,9 @@
 package ventanas;
 
 import codigo.Cliente;
-import codigo.ClienteFidelizado;
 import codigo.Socio;
 import codigo.Subscriptor;
 import codigo.UtilTienda;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import presentacion.Inicio;
@@ -170,9 +168,7 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonVolverActionPerformed
 
     private void BotonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAltaActionPerformed
-        /**
-         * hacer comprobaciones para que no se pueda tener el mismo numero id o tarjeta
-         */
+
         Cliente c;
         
         if(UtilTienda.consultaClienteId(idTextF.getText()) != null){
@@ -183,16 +179,15 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");
             }else{ 
                 if(BotonSocios.isSelected()){
-                    Socio cliente = new Socio(Integer.parseInt(numeroTarjeta.getText()),0, c.getId(), c.getDni(), c.getNombre());
+                    Socio cliente = new Socio(Integer.parseInt(numeroTarjeta.getText()),0, c.getId(), c.getDni(), c.getNombre(), "Socio");
                     cliente.setId(idTextF.getText());
                     if(UtilTienda.getClientesFidelizados().contains(cliente)){
                         JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
                     }else{
                         UtilTienda.altaSocio(cliente);
-                        System.out.println("Cliente: " + cliente.getNombre());
                     }
                 }else if(BotonSubscriptores.isSelected()){
-                    Subscriptor cliente = new Subscriptor(Integer.parseInt(numeroTarjeta.getText()), 0, c.getId(), c.getDni(), c.getNombre());
+                    Subscriptor cliente = new Subscriptor(Integer.parseInt(numeroTarjeta.getText()), 0, c.getId(), c.getDni(), c.getNombre(), "Subscriptor");
                     cliente.setId(idTextF.getText());
                     if(UtilTienda.getClientesFidelizados().contains(cliente)){
                         JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");

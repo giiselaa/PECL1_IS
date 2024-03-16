@@ -25,8 +25,8 @@ public class Subscriptor extends ClienteFidelizado{
         this.estrellas = estrellas;
     }
 
-    public Subscriptor( int numeroTarjeta, int puntos, String id, String dni, String nombre) {
-        super(numeroTarjeta, puntos, id, dni, nombre);
+    public Subscriptor( int numeroTarjeta, int puntos, String id, String dni, String nombre, String tipo) {
+        super(numeroTarjeta, puntos, id, dni, nombre, tipo);
         this.estrellas = 0;
         this.fechaAlta = LocalDate.now();
     }

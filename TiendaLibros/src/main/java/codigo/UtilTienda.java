@@ -22,10 +22,19 @@ public class UtilTienda {
     private static ArrayList<ClienteFidelizado> socios = new ArrayList();
     private static ArrayList<Libro> listaLibros = new ArrayList();
     private static Cliente objuser;
+    private static ClienteFidelizado objuserF;
     private Map<Libro, Map<Socio, ArrayList<Resenna>>> resennasPorLibro = new HashMap<>();
     
     public static ArrayList<Cliente> getClientes() {
         return clientes;
+    }
+    
+    public static ArrayList<ClienteFidelizado> getSocios() {
+        return socios;
+    }
+    
+    public static ArrayList<ClienteFidelizado> getSubscriptores() {
+        return subscriptores;
     }
     
     public static ArrayList<ClienteFidelizado> getClientesFidelizados() {
@@ -96,7 +105,8 @@ public class UtilTienda {
      * @param cliente Cliente a dar de alta
      * @return true si se da de alta y false si no */
     public static boolean altaSocio(Socio cliente) {
-        if (consultaFidelizacion(cliente.getNumeroTarjeta())==null && consultaClienteId(cliente.getId()) == null) {
+        //&& consultaClienteId(cliente.getId()) == null
+        if (consultaFidelizacion(cliente.getNumeroTarjeta())==null) {
             socios.add(cliente);
             return true;
         } else {
@@ -139,11 +149,23 @@ public class UtilTienda {
             return false;
         }
     }
+    
+        /** Da de baja una fidelizacion
+     * @param cliente Cliente a dar de baja
+     * @return true si se da de baja y false si no  */
+    public static boolean bajaFidelizacion(ClienteFidelizado cliente) {
+        if (clientesFidelizados.contains(cliente)) {
+            clientesFidelizados.remove(cliente);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /** Consulta los datos de un Cliente por su Id
      * @param numeroTarjeta numero de la tarjeta de fidelizacion del cliente a buscar en la lista
      * @return  El cliente de la lista con el numero buscado*/
-    public static Cliente consultaFidelizacion(int numeroTarjeta) {
+    public static ClienteFidelizado consultaFidelizacion(int numeroTarjeta) {
         //Comparador para ordenar los Clientes por su numero de tarjeta de fidelizacion
         Comparator<ClienteFidelizado> NumproComp = new Comparator<ClienteFidelizado>() {
             @Override
@@ -164,12 +186,12 @@ public class UtilTienda {
 
         // Verificamos si se encontró el cliente
         if (pos >= 0) {
-            objuser = clientesFidelizados.get(pos);
+            objuserF = clientesFidelizados.get(pos);
         } else {
-            objuser = null;
+            objuserF = null;
         }
 
-        return objuser;
+        return objuserF;
     }
     
     /** 
@@ -199,12 +221,14 @@ public class UtilTienda {
     }
     
     public static ArrayList<Libro> iniciarListaLibros(){
-        Libro libro1 = new Libro(12345678, "Pepe", "frankenstein", 12);
-        Libro libro2= new Libro(23456789, "Cervantes", "El Quijote", 13);
-        Libro libro3 = new Libro(87654321, "Jose", "Dune", 18);
+        Libro libro1 = new Libro(12345678, "Mary Shelley", "Frankenstein", 12);
+        Libro libro2= new Libro(23456789, "M. Cervantes", "El Quijote", 13);
+        Libro libro3 = new Libro(87654321, "Frank Herbert", "Dune", 18);
+        Libro libro4 = new Libro(53982063, "André Aciman", "Call me by your name", 10);        
         listaLibros.add(libro1);
         listaLibros.add(libro2);
         listaLibros.add(libro3);
+        listaLibros.add(libro4);
         return listaLibros;
     }
     

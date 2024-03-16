@@ -10,8 +10,8 @@ package codigo;
  */
 public class Socio extends ClienteFidelizado{
 
-    public Socio(int numeroTarjeta, int puntos, String id, String dni, String nombre) {
-        super(numeroTarjeta, puntos, id, dni, nombre);
+    public Socio(int numeroTarjeta, int puntos, String id, String dni, String nombre, String tipo) {
+        super(numeroTarjeta, puntos, id, dni, nombre, tipo);
     }
     
     
