@@ -19,6 +19,7 @@ public class ClienteFidelizado extends Cliente{
     private String id;
     private String tipo;
     private String nombre;
+    private Domicilio domicilio;
             
     public ClienteFidelizado() {
     }
@@ -29,7 +30,15 @@ public class ClienteFidelizado extends Cliente{
         this.fechaAlta = LocalDate.now();
     }*/
 
-    public ClienteFidelizado(int numeroTarjeta, int puntos, String id, String dni, String nombre, String tipo) {
+    public ClienteFidelizado(int numeroTarjeta, int puntos, String id, String dni, String nombre, String tipo, Domicilio domicilio) {
+        super(id, dni, nombre, domicilio);
+        this.numeroTarjeta = numeroTarjeta;
+        this.fechaAlta = LocalDate.now();
+        this.puntos = puntos;
+        this.tipo = tipo;
+    }
+    
+        public ClienteFidelizado(int numeroTarjeta, int puntos, String id, String dni, String nombre, String tipo) {
         super(id, dni, nombre);
         this.numeroTarjeta = numeroTarjeta;
         this.fechaAlta = LocalDate.now();

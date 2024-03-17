@@ -4,11 +4,13 @@
  */
 package ventanas;
 
-import codigo.ClienteFidelizado;
 import codigo.Libro;
 import codigo.UtilTienda;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import presentacion.Inicio;
 
 /**
  *
@@ -53,26 +55,17 @@ public class GenerarOrdenImpresion extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
-        BotonCancelar = new javax.swing.JButton();
         BotonFinalizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaLibros = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         BotonAnnadir = new javax.swing.JButton();
+        BotonActualizar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         Titulo.setForeground(new java.awt.Color(94, 57, 21));
         Titulo.setText("Generar orden de impresión");
-
-        BotonCancelar.setBackground(new java.awt.Color(150, 116, 83));
-        BotonCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        BotonCancelar.setText("Cancelar");
-        BotonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonCancelarActionPerformed(evt);
-            }
-        });
 
         BotonFinalizar.setBackground(new java.awt.Color(150, 116, 83));
         BotonFinalizar.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,47 +89,57 @@ public class GenerarOrdenImpresion extends javax.swing.JPanel {
             }
         });
 
+        BotonActualizar.setBackground(new java.awt.Color(150, 116, 83));
+        BotonActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        BotonActualizar.setText("Actualizar lista");
+        BotonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(BotonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addGap(214, 214, 214)
+                .addComponent(Titulo)
+                .addContainerGap(435, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(Titulo))
+                        .addComponent(BotonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BotonAnnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(132, Short.MAX_VALUE))
+                                .addGap(324, 324, 324)
+                                .addComponent(BotonAnnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(Titulo)
-                .addGap(79, 79, 79)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(BotonAnnadir, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonCancelar)
-                    .addComponent(BotonFinalizar))
-                .addGap(63, 63, 63))
+                    .addComponent(BotonFinalizar)
+                    .addComponent(BotonActualizar))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -151,12 +154,17 @@ public class GenerarOrdenImpresion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonCancelarActionPerformed
-
     private void BotonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFinalizarActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Se ha generado la orden de impresión");
+            ordenImpresion.clear();
+
+        
+        Principal p1= new Principal();
+        p1.setSize(800, 490);
+        p1.setLocation(0,0);
+        
+        Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+        inicio.cambiarContenido(p1);
     }//GEN-LAST:event_BotonFinalizarActionPerformed
 
     private void BotonAnnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAnnadirActionPerformed
@@ -165,10 +173,19 @@ public class GenerarOrdenImpresion extends javax.swing.JPanel {
         l.setLocationRelativeTo(null);
     }//GEN-LAST:event_BotonAnnadirActionPerformed
 
+    private void BotonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActualizarActionPerformed
+        for(Libro libro : ordenImpresion){
+            String texto = libro.toString();
+            if(!model.contains(texto)){
+                model.addElement(texto);
+            }
+        }
+    }//GEN-LAST:event_BotonActualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonActualizar;
     private javax.swing.JButton BotonAnnadir;
-    private javax.swing.JButton BotonCancelar;
     private javax.swing.JButton BotonFinalizar;
     private javax.swing.JList<String> ListaLibros;
     private javax.swing.JLabel Titulo;

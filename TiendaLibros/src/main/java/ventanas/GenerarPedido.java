@@ -214,7 +214,9 @@ public class GenerarPedido extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSeleccionarActionPerformed
-        //mensaje preguntando el numero de ejemplares del libro
+        Ejemplares e = new Ejemplares();
+        e.setVisible(true);
+        e.setLocationRelativeTo(null);
     }//GEN-LAST:event_BotonSeleccionarActionPerformed
 
     private void BotonGenerarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGenerarFacturaActionPerformed

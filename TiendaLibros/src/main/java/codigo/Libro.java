@@ -41,6 +41,11 @@ public class Libro {
     public int getStock(){
         return this.stock;
     }
+
+    @Override
+    public String toString() {
+        return "Titulo: " + titulo + ", autor: " + autor + ", codigo: " + codigoL + ", stock: " + stock;
+    }
     
     
 }
