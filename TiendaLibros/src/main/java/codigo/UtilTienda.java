@@ -21,6 +21,7 @@ public class UtilTienda {
     private static ArrayList<ClienteFidelizado> subscriptores = new ArrayList();
     private static ArrayList<ClienteFidelizado> socios = new ArrayList();
     private static ArrayList<Libro> listaLibros = new ArrayList();
+    private static ArrayList<Libro> ordenImpresion = new ArrayList();
     private static Cliente objuser;
     private static ClienteFidelizado objuserF;
     private Map<Libro, Map<Socio, ArrayList<Resenna>>> resennasPorLibro = new HashMap<>();
@@ -38,12 +39,6 @@ public class UtilTienda {
     }
     
     public static ArrayList<ClienteFidelizado> getClientesFidelizados() {
-        for(ClienteFidelizado socio: socios){
-            clientesFidelizados.add(socio);
-        }
-        for(ClienteFidelizado subs: subscriptores){
-            clientesFidelizados.add(subs);
-        }
         return clientesFidelizados;
     }
     
@@ -150,6 +145,15 @@ public class UtilTienda {
         }
     }
     
+    public static boolean altaFidelizacion(ClienteFidelizado cliente) {
+        if (consultaFidelizacion(cliente.getNumeroTarjeta())==null) {
+            clientesFidelizados.add(cliente);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
         /** Da de baja una fidelizacion
      * @param cliente Cliente a dar de baja
      * @return true si se da de baja y false si no  */
@@ -238,6 +242,18 @@ public class UtilTienda {
         }
         return listaLibros;
     }
+
+    public static ArrayList<Libro> getOrdenImpresion() {
+        return ordenImpresion;
+    }
     
+    public static boolean annadirLibro(Libro libro) {
+        if(!ordenImpresion.contains(libro)){
+            ordenImpresion.add(libro);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 

@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import ventanas.ConsultaCliente;
 import ventanas.ConsultaLibro;
-import ventanas.DarAlta;
 import ventanas.Fidelizacion;
 import ventanas.InicioSesionAlta;
 import ventanas.InicioSesionInformes;

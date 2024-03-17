@@ -8,6 +8,7 @@ import codigo.ClienteFidelizado;
 import codigo.UtilTienda;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import presentacion.Inicio;
 
@@ -63,7 +64,7 @@ public class Fidelizacion extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaAdheridos = new javax.swing.JList<>();
         TituloLista = new javax.swing.JLabel();
-        BotonSeleccionar = new javax.swing.JButton();
+        BotonConsultar = new javax.swing.JButton();
 
         fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setPreferredSize(new java.awt.Dimension(800, 490));
@@ -84,14 +85,15 @@ public class Fidelizacion extends javax.swing.JPanel {
 
         ListaAdheridos.setModel(model);
         ListaAdheridos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ListaAdheridos.setToolTipText("");
         jScrollPane1.setViewportView(ListaAdheridos);
 
         TituloLista.setText("Lista de adheridos al programa:");
 
-        BotonSeleccionar.setText("Seleccionar");
-        BotonSeleccionar.addActionListener(new java.awt.event.ActionListener() {
+        BotonConsultar.setText("Consultar");
+        BotonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonSeleccionarActionPerformed(evt);
+                BotonConsultarActionPerformed(evt);
             }
         });
 
@@ -107,7 +109,7 @@ public class Fidelizacion extends javax.swing.JPanel {
                         .addGroup(fondoLayout.createSequentialGroup()
                             .addComponent(TituloLista)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BotonSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BotonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addGap(133, 133, 133)
@@ -122,7 +124,7 @@ public class Fidelizacion extends javax.swing.JPanel {
                 .addGap(45, 45, 45)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(TituloLista)
-                    .addComponent(BotonSeleccionar))
+                    .addComponent(BotonConsultar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77)
@@ -138,9 +140,7 @@ public class Fidelizacion extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,20 +153,24 @@ public class Fidelizacion extends javax.swing.JPanel {
         inicio.cambiarContenido(da);
     }//GEN-LAST:event_BotonAltaActionPerformed
 
-    private void BotonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSeleccionarActionPerformed
+    private void BotonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonConsultarActionPerformed
         int seleccionado = ListaAdheridos.getSelectedIndex();
+    if (seleccionado != -1 && seleccionado < clientesFidelizados.size()) {
         clienteSeleccionado = clientesFidelizados.get(seleccionado);
 
         ConsultaFidelizacion cf = new ConsultaFidelizacion(clienteSeleccionado);
         cf.setLocationRelativeTo(null);
         cf.setVisible(true);
-
-    }//GEN-LAST:event_BotonSeleccionarActionPerformed
+    } else {
+        // Si no hay ningún elemento seleccionado, muestra un mensaje de error
+        JOptionPane.showMessageDialog(this, "Por favor, seleccione un cliente de la lista.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BotonConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonAlta;
-    private javax.swing.JButton BotonSeleccionar;
+    private javax.swing.JButton BotonConsultar;
     private javax.swing.JList<String> ListaAdheridos;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel TituloLista;

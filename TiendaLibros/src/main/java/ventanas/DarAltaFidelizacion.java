@@ -173,6 +173,7 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
         
         if(UtilTienda.consultaClienteId(idTextF.getText()) != null){
             c = UtilTienda.consultaClienteId(idTextF.getText());
+            String nombre = c.getNombre();
             if(!BotonSocios.isSelected() & !BotonSubscriptores.isSelected()){
                 JOptionPane.showMessageDialog(this, "Debe seleccionar el tipo de subscripción que desea");
             }else if(idTextF.getText().isEmpty() || numeroTarjeta.getText().isEmpty()){
@@ -181,18 +182,22 @@ public class DarAltaFidelizacion extends javax.swing.JPanel {
                 if(BotonSocios.isSelected()){
                     Socio cliente = new Socio(Integer.parseInt(numeroTarjeta.getText()),0, c.getId(), c.getDni(), c.getNombre(), "Socio");
                     cliente.setId(idTextF.getText());
+                    cliente.setNombre(nombre);
                     if(UtilTienda.getClientesFidelizados().contains(cliente)){
                         JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
                     }else{
                         UtilTienda.altaSocio(cliente);
+                        UtilTienda.altaFidelizacion(cliente);
                     }
                 }else if(BotonSubscriptores.isSelected()){
                     Subscriptor cliente = new Subscriptor(Integer.parseInt(numeroTarjeta.getText()), 0, c.getId(), c.getDni(), c.getNombre(), "Subscriptor");
                     cliente.setId(idTextF.getText());
+                    cliente.setNombre(nombre);
                     if(UtilTienda.getClientesFidelizados().contains(cliente)){
                         JOptionPane.showMessageDialog(this, "El cliente indicado ya estaba dado de alta");
                     }else{
                         UtilTienda.altaSubscriptor(cliente);
+                        UtilTienda.altaFidelizacion(cliente);
                     }
                 }
 

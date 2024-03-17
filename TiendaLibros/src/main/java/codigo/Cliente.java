@@ -1,11 +1,9 @@
 
 package codigo;
 
-import java.util.Date;
-
 /**
  * 
- * @author Elia Encinas, Gisela González y Achraf (apellido)
+ * @author Elia Encinas, Gisela González y Achraf El Kasmi
  */
 public class Cliente {
     

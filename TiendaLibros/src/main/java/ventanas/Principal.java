@@ -52,6 +52,7 @@ public class Principal extends javax.swing.JPanel {
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
         BotonGenerarPedido.putClientProperty( "JButton.buttonType", "roundRect" );
+        BotonGenerarOrden.putClientProperty( "JButton.buttonType", "roundRect" );
         
     }
 
@@ -69,6 +70,7 @@ public class Principal extends javax.swing.JPanel {
         Titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaCatalogo = new javax.swing.JTable();
+        BotonGenerarOrden = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(754, 490));
 
@@ -99,7 +101,17 @@ public class Principal extends javax.swing.JPanel {
                 "Título", "Autor", "Código", "Stock"
             }
         ));
+        TablaCatalogo.setEnabled(false);
         jScrollPane1.setViewportView(TablaCatalogo);
+
+        BotonGenerarOrden.setBackground(new java.awt.Color(150, 116, 83));
+        BotonGenerarOrden.setForeground(new java.awt.Color(255, 255, 255));
+        BotonGenerarOrden.setText("Generar orden de impresión");
+        BotonGenerarOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonGenerarOrdenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
@@ -108,15 +120,18 @@ public class Principal extends javax.swing.JPanel {
             .addGroup(fondoLayout.createSequentialGroup()
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondoLayout.createSequentialGroup()
-                        .addGap(296, 296, 296)
-                        .addComponent(BotonGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(79, 79, 79)
+                        .addComponent(Titulo))
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(fondoLayout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(Titulo)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(BotonGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonGenerarOrden)
+                .addGap(111, 111, 111))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,9 +140,11 @@ public class Principal extends javax.swing.JPanel {
                 .addComponent(Titulo)
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(BotonGenerarPedido)
-                .addGap(84, 84, 84))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonGenerarPedido)
+                    .addComponent(BotonGenerarOrden))
+                .addGap(72, 72, 72))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -151,8 +168,18 @@ public class Principal extends javax.swing.JPanel {
         inicio.cambiarContenido(gp);
     }//GEN-LAST:event_BotonGenerarPedidoActionPerformed
 
+    private void BotonGenerarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGenerarOrdenActionPerformed
+        GenerarOrdenImpresion go= new GenerarOrdenImpresion();
+        go.setSize(800, 490);
+        go.setLocation(0,0);
+        
+        Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+        inicio.cambiarContenido(go);
+    }//GEN-LAST:event_BotonGenerarOrdenActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonGenerarOrden;
     private javax.swing.JButton BotonGenerarPedido;
     private javax.swing.JTable TablaCatalogo;
     private javax.swing.JLabel Titulo;

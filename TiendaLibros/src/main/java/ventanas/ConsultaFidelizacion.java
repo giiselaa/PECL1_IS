@@ -8,8 +8,6 @@ import codigo.ClienteFidelizado;
 import codigo.Socio;
 import codigo.Subscriptor;
 import codigo.UtilTienda;
-import javax.swing.SwingUtilities;
-import presentacion.Inicio;
 
 /**
  *
@@ -199,12 +197,7 @@ public class ConsultaFidelizacion extends javax.swing.JFrame {
             UtilTienda.bajaSubscriptor(subscriptor);
         }
         
-        Principal p = new Principal();
-        p.setSize(800, 490);
-        p.setLocation(0,0);
-        
-        Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
-        inicio.cambiarContenido(p);
+        this.dispose();
     }//GEN-LAST:event_DarBajaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
