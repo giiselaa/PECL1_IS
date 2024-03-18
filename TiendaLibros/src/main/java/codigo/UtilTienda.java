@@ -26,6 +26,7 @@ public class UtilTienda {
     private static ClienteFidelizado objuserF;
     private Map<Libro, Map<Socio, ArrayList<Resenna>>> resennasPorLibro = new HashMap<>();
     private static ArrayList<Pedido> listaPedidos = new ArrayList();
+    private static ArrayList<Pedido> listaPedidosPendientes = new ArrayList();
     
     public static ArrayList<Cliente> getClientes() {
         return clientes;
@@ -260,6 +261,11 @@ public class UtilTienda {
     public static ArrayList<Pedido> getListaPedidos() {
         return listaPedidos;
     }
+
+    public static ArrayList<Pedido> getListaPedidosPendientes() {
+        return listaPedidosPendientes;
+    }
+    
     
 }
 

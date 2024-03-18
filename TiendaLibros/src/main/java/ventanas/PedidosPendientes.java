@@ -4,6 +4,11 @@
  */
 package ventanas;
 
+import codigo.Pedido;
+import codigo.UtilTienda;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import presentacion.Inicio;
 
@@ -13,18 +18,28 @@ import presentacion.Inicio;
  */
 public class PedidosPendientes extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PedidosPendientes
-     */
+    DefaultListModel<String> model = new DefaultListModel<>();
+    ArrayList<Pedido> listaPedidosPendientes = UtilTienda.getListaPedidosPendientes();
+    
     public PedidosPendientes() {
         initComponents();
         initStyles();
+        addPedidosLista();
     }
     
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
         BotonCancelar.putClientProperty( "JButton.buttonType", "roundRect" );
         BotonRealizar.putClientProperty( "JButton.buttonType", "roundRect" );
+    }
+    
+    public void addPedidosLista(){
+        for (Pedido pedido : listaPedidosPendientes) {
+            String texto = pedido.toString();
+            if(!model.contains(texto)){
+                model.addElement(texto);
+            }
+        }
     }
 
     /**
@@ -39,7 +54,7 @@ public class PedidosPendientes extends javax.swing.JPanel {
         fondo = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        ListaPedidos = new javax.swing.JList<>();
         BotonRealizar = new javax.swing.JButton();
         BotonCancelar = new javax.swing.JButton();
 
@@ -48,8 +63,9 @@ public class PedidosPendientes extends javax.swing.JPanel {
         Titulo.setForeground(new java.awt.Color(94, 57, 21));
         Titulo.setText("Pedidos pendientes");
 
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jList1);
+        ListaPedidos.setModel(model);
+        ListaPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(ListaPedidos);
 
         BotonRealizar.setBackground(new java.awt.Color(150, 116, 83));
         BotonRealizar.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,10 +131,18 @@ public class PedidosPendientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
-        // eliminar pedido del array en el que estarán y actualizar lista
+        int pedido = ListaPedidos.getSelectedIndex();
+        listaPedidosPendientes.remove(pedido);
+        addPedidosLista();
+        
+        JOptionPane.showMessageDialog(this, "Se ha cancelado el pedido pendiente");
     }//GEN-LAST:event_BotonCancelarActionPerformed
 
     private void BotonRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRealizarActionPerformed
+        int pedido = ListaPedidos.getSelectedIndex();
+        listaPedidosPendientes.remove(pedido);
+        addPedidosLista();
+        
         Principal p1= new Principal();
         p1.setSize(800, 490);
         p1.setLocation(0,0);
@@ -131,9 +155,9 @@ public class PedidosPendientes extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCancelar;
     private javax.swing.JButton BotonRealizar;
+    private javax.swing.JList<String> ListaPedidos;
     private javax.swing.JLabel Titulo;
     private javax.swing.JPanel fondo;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

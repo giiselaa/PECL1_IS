@@ -24,12 +24,6 @@ public class ClienteFidelizado extends Cliente{
     public ClienteFidelizado() {
     }
     
-   /* public ClienteFidelizado(int numeroTarjeta, int puntos) {
-        this.numeroTarjeta = numeroTarjeta;
-        this.puntos = puntos;
-        this.fechaAlta = LocalDate.now();
-    }*/
-
     public ClienteFidelizado(int numeroTarjeta, int puntos, String id, String dni, String nombre, String tipo, Domicilio domicilio) {
         super(id, dni, nombre, domicilio);
         this.numeroTarjeta = numeroTarjeta;

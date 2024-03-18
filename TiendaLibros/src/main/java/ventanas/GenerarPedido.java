@@ -37,6 +37,7 @@ public class GenerarPedido extends javax.swing.JPanel {
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
         BotonGenerarFactura.putClientProperty( "JButton.buttonType", "roundRect" );
+        BotonPedidoPendiente.putClientProperty("JButton.buttonType", "roundRect" );
     }
     
     ArrayList<Libro> listaLibros;
@@ -89,6 +90,7 @@ public class GenerarPedido extends javax.swing.JPanel {
         Id = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Ejemplares = new javax.swing.JFormattedTextField();
+        BotonPedidoPendiente = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -146,6 +148,15 @@ public class GenerarPedido extends javax.swing.JPanel {
 
         jLabel4.setText("Ejemplares:");
 
+        BotonPedidoPendiente.setBackground(new java.awt.Color(150, 116, 83));
+        BotonPedidoPendiente.setForeground(new java.awt.Color(255, 255, 255));
+        BotonPedidoPendiente.setText("Generar pedido pendiente");
+        BotonPedidoPendiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonPedidoPendienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
@@ -153,10 +164,11 @@ public class GenerarPedido extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
                 .addContainerGap(83, Short.MAX_VALUE)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Titulo)
                     .addGroup(fondoLayout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(BotonGenerarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BotonGenerarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonPedidoPendiente, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Titulo)
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -214,9 +226,11 @@ public class GenerarPedido extends javax.swing.JPanel {
                     .addComponent(Ejemplares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(BotonGenerarFactura)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonGenerarFactura)
+                    .addComponent(BotonPedidoPendiente))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -240,9 +254,14 @@ public class GenerarPedido extends javax.swing.JPanel {
         
         if(Ejemplares.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe añadir la cantidad de ejemplares que desea del libro");
+        }else if((Integer.parseInt(Ejemplares.getText())) > (listaLibros.get(seleccionado).getStock())){
+            JOptionPane.showMessageDialog(this, "No hay tantos ejemplares en stock, debe generar un pedido pendiente");
+            BotonGenerarFactura.setEnabled(false);
         }else{
             ejemplares = Integer.parseInt(Ejemplares.getText()); 
             Libro libroSeleccionado = new Libro(codigo,autor,titulo,ejemplares); 
+            int ejemplaresAntes = listaLibros.get(seleccionado).getStock();
+            listaLibros.get(seleccionado).setStock(ejemplaresAntes - ejemplares);
             librosPedidos.add(libroSeleccionado);
         }
   
@@ -272,10 +291,26 @@ public class GenerarPedido extends javax.swing.JPanel {
         d.setLocationRelativeTo(null);
     }//GEN-LAST:event_BotonDireccionActionPerformed
 
+    private void BotonPedidoPendienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPedidoPendienteActionPerformed
+        Cliente cliente = new Cliente(Id.getText(),dniCliente.getText(), Nombre.getText(), domicilio);
+        LocalDate fecha = LocalDate.now();
+        
+        Pedido pedido = new Pedido(cliente, fecha, librosPedidos);
+        UtilTienda.getListaPedidosPendientes().add(pedido);
+        
+        Principal p2 = new Principal();
+        p2.setSize(800,490);
+        p2.setLocation(0,0);
+        
+        Inicio inicio = (Inicio) SwingUtilities.getWindowAncestor(this);
+        inicio.cambiarContenido(p2);  
+    }//GEN-LAST:event_BotonPedidoPendienteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonDireccion;
     private javax.swing.JButton BotonGenerarFactura;
+    private javax.swing.JButton BotonPedidoPendiente;
     private javax.swing.JButton BotonSeleccionar;
     private javax.swing.JTextField CodigoPedido;
     private javax.swing.JFormattedTextField Ejemplares;

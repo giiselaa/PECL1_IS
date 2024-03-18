@@ -28,8 +28,7 @@ public class Fidelizacion extends javax.swing.JPanel {
     public Fidelizacion() {
         initComponents();
         initStyles();
-        addClientesLista();
-        
+        addClientesLista();  
     }
     
     public void initStyles(){

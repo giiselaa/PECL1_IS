@@ -2,6 +2,7 @@
 package codigo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 public class Pedido {
 
     private Cliente cliente;//dni cliente
-    private LocalDate fecha;
+    private LocalDate fecha = LocalDate.now();
     private ArrayList<Libro> listaLibrosPedidos = new ArrayList(); //codigo
 
     public Pedido(Cliente cliente, LocalDate fecha, ArrayList<Libro> listaLibrosPedidos) {
@@ -43,6 +44,18 @@ public class Pedido {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+    
+    public String formatear(LocalDate fecha){  
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaF = fecha.format(formato);
+        return fechaF;
+    }
+
+    @Override
+    public String toString() {
+        return "Id del cliente: " + cliente.getId() + ", fecha: " + formatear(fecha);
+    }
+    
     
     
 }

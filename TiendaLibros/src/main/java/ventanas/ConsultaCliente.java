@@ -144,6 +144,7 @@ public class ConsultaCliente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
+        IniciarTabla();
         boolean encontrado = false;
         for(Pedido pedido : listaPedidos){
             String id = pedido.getCliente().getId();

@@ -34,7 +34,7 @@ public class Libro {
         return this.autor;
     }
     
-    public void actualizarStock(int stock){
+    public void setStock(int stock){
         this.stock = stock;
     }
     
