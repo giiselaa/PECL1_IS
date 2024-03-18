@@ -22,6 +22,7 @@ public class ConsultaLibro extends javax.swing.JPanel {
     ArrayList<Libro> listaLibrosVendidos = new ArrayList<>();
     private DefaultTableModel d;
     private Object[] datos;
+    private int ejempTotales = 0;
     
     public ConsultaLibro() {
         initComponents();
@@ -36,22 +37,11 @@ public class ConsultaLibro extends javax.swing.JPanel {
     public void IniciarTabla(){
         d = new DefaultTableModel();
         Tabla.setModel(d);
-        String[] cabecera = {"Codigo del pedido", "Ejemplares vendidos", "Fecha"};
+        String[] cabecera = {"Cliente", "Ejemplares vendidos", "Fecha"};
         d.setColumnIdentifiers(cabecera);
         datos = new Object[3];
     }
     
-    public void AnnadirPedido(Pedido pedido){
-        LocalDate fecha = pedido.getFecha();
-        //long Codigo = pedido.get
-        for(Libro libro : listaLibrosVendidos){
-            long codigo = libro.getCodigoL();
-            datos[0] = codigo;
-            datos[1] = fecha;
-            d.addRow(datos);
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,18 +85,18 @@ public class ConsultaLibro extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Código del pedido", "Ejemplares vendidos", "Fecha"
+                "Cliente", "Ejemplares vendidos", "Fecha"
             }
         ));
         jScrollPane1.setViewportView(Tabla);
 
         jLabel1.setText("Primer ejemplar:");
 
-        PrimerEjemplar.setText("PrimerEj");
+        PrimerEjemplar.setText("                  ");
 
         jLabel4.setText("Total:");
 
-        TotalEjemplares.setText("totalLibros");
+        TotalEjemplares.setText("         ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,11 +105,8 @@ public class ConsultaLibro extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
+                        .addGap(99, 99, 99)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(233, 233, 233)
-                                .addComponent(Titulo))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(95, 95, 95)
@@ -129,22 +116,25 @@ public class ConsultaLibro extends javax.swing.JPanel {
                                 .addGap(104, 104, 104)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TotalEjemplares, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(TotalEjemplares, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TituloL, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(BotonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TituloL, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(BotonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                        .addGap(255, 255, 255)
+                        .addComponent(Titulo)))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(42, 42, 42)
                 .addComponent(Titulo)
-                .addGap(53, 53, 53)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(TituloL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,7 +147,7 @@ public class ConsultaLibro extends javax.swing.JPanel {
                     .addComponent(PrimerEjemplar)
                     .addComponent(jLabel4)
                     .addComponent(TotalEjemplares))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -179,13 +169,19 @@ public class ConsultaLibro extends javax.swing.JPanel {
             for(Libro libro : listaLibrosVendidos){
                 String titulo = libro.getTitulo();
                 if(titulo.equals(TituloL.getText())){
-                    AnnadirPedido(pedido);
+                    ejempTotales += libro.getStock();                    
+                    datos[0] = pedido.getCliente().getNombre();
+                    datos[1] = libro.getStock();
+                    datos[2] = pedido.getFecha();
+                    d.addRow(datos);
                     encontrado = true;
                 }   
             }   
         }
+        PrimerEjemplar.setText(String.valueOf(Tabla.getValueAt(0, 2)));
+        TotalEjemplares.setText(String.valueOf(ejempTotales));
         if(!encontrado){
-            JOptionPane.showMessageDialog(this, "No se encontraron pedidos asociados al cliente indicado");
+            JOptionPane.showMessageDialog(this, "No se encontraron pedidos asociados al libro indicado");
         }
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
