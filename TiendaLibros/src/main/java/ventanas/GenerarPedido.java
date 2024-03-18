@@ -4,8 +4,12 @@
  */
 package ventanas;
 
+import codigo.Cliente;
+import codigo.Domicilio;
 import codigo.Libro;
+import codigo.Pedido;
 import codigo.UtilTienda;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -19,10 +23,10 @@ import presentacion.Inicio;
  * @author giise
  */
 public class GenerarPedido extends javax.swing.JPanel {
-
-    /**
-     * Creates new form GenerarPedido
-     */
+    
+    private ArrayList<Libro> librosPedidos = new ArrayList();
+    Domicilio domicilio = new Domicilio("","","",0,0);
+    
     public GenerarPedido() {
         initComponents();
         initStyles();
@@ -53,6 +57,10 @@ public class GenerarPedido extends javax.swing.JPanel {
         }
     }
     
+    public void establecerDomicilio(Domicilio domicilio) {
+    this.domicilio = domicilio;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,10 +82,13 @@ public class GenerarPedido extends javax.swing.JPanel {
         BotonGenerarFactura = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
-        comentario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Nombre = new javax.swing.JTextField();
         BotonDireccion = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        Id = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        Ejemplares = new javax.swing.JFormattedTextField();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -122,10 +133,6 @@ public class GenerarPedido extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(Tabla);
 
-        comentario.setBackground(new java.awt.Color(255, 255, 255));
-        comentario.setForeground(new java.awt.Color(153, 153, 153));
-        comentario.setText("Los libros han de seleccionarse uno a uno para añadir el número de ejemplares de cada uno");
-
         jLabel2.setText("Nombre del cliente:");
 
         BotonDireccion.setText("Añadir dirección");
@@ -135,22 +142,29 @@ public class GenerarPedido extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("ID del cliente:");
+
+        jLabel4.setText("Ejemplares:");
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
                 .addContainerGap(83, Short.MAX_VALUE)
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Titulo)
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addGap(233, 233, 233)
                         .addComponent(BotonGenerarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(comentario)
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BotonSeleccionar))
+                        .addComponent(BotonSeleccionar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Ejemplares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(fondoLayout.createSequentialGroup()
                         .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -159,17 +173,19 @@ public class GenerarPedido extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(CodigoPedido)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                            .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(fondoLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Id)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BotonDireccion))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
                                 .addComponent(jLabeldni)
                                 .addGap(18, 18, 18)
-                                .addComponent(dniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BotonDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(71, 71, 71)))))
+                                .addComponent(dniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(73, 73, 73))
         );
         fondoLayout.setVerticalGroup(
@@ -186,17 +202,19 @@ public class GenerarPedido extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonDireccion))
+                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonDireccion)
+                    .addComponent(jLabel3)
+                    .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(BotonSeleccionar))
+                    .addComponent(BotonSeleccionar)
+                    .addComponent(jLabel4)
+                    .addComponent(Ejemplares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comentario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
                 .addComponent(BotonGenerarFactura)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -214,13 +232,30 @@ public class GenerarPedido extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSeleccionarActionPerformed
-        Ejemplares e = new Ejemplares();
-        e.setVisible(true);
-        e.setLocationRelativeTo(null);
+        int seleccionado = Tabla.getSelectedRow();
+        long codigo = listaLibros.get(seleccionado).getCodigoL();
+        String autor = listaLibros.get(seleccionado).getAutor();
+        String titulo = listaLibros.get(seleccionado).getTitulo();
+        int ejemplares;
+        
+        if(Ejemplares.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe añadir la cantidad de ejemplares que desea del libro");
+        }else{
+            ejemplares = Integer.parseInt(Ejemplares.getText()); 
+            Libro libroSeleccionado = new Libro(codigo,autor,titulo,ejemplares); 
+            librosPedidos.add(libroSeleccionado);
+        }
+  
     }//GEN-LAST:event_BotonSeleccionarActionPerformed
 
     private void BotonGenerarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGenerarFacturaActionPerformed
         //generar factura y si sale bien:
+        Cliente cliente = new Cliente(Id.getText(),dniCliente.getText(), Nombre.getText(), domicilio);
+        LocalDate fecha = LocalDate.now();
+        
+        Pedido pedido = new Pedido(cliente, fecha, librosPedidos);
+        UtilTienda.getListaPedidos().add(pedido);
+        
         JOptionPane.showMessageDialog(GenerarPedido.this, "La factura se realizó correctamente", "", JOptionPane.INFORMATION_MESSAGE);
         
         Principal p1 = new Principal();
@@ -232,7 +267,7 @@ public class GenerarPedido extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonGenerarFacturaActionPerformed
 
     private void BotonDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDireccionActionPerformed
-        Direccion d = new Direccion();
+        Direccion d = new Direccion(this);
         d.setVisible(true);
         d.setLocationRelativeTo(null);
     }//GEN-LAST:event_BotonDireccionActionPerformed
@@ -243,17 +278,20 @@ public class GenerarPedido extends javax.swing.JPanel {
     private javax.swing.JButton BotonGenerarFactura;
     private javax.swing.JButton BotonSeleccionar;
     private javax.swing.JTextField CodigoPedido;
+    private javax.swing.JFormattedTextField Ejemplares;
+    private javax.swing.JTextField Id;
+    private javax.swing.JTextField Nombre;
     private javax.swing.JTable Tabla;
     private javax.swing.JLabel Titulo;
-    private javax.swing.JLabel comentario;
     private javax.swing.JTextField dniCliente;
     private javax.swing.JPanel fondo;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelCodigo;
     private javax.swing.JLabel jLabeldni;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
