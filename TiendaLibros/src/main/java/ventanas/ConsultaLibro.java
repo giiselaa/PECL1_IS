@@ -4,22 +4,52 @@
  */
 package ventanas;
 
+import codigo.Libro;
+import codigo.Pedido;
+import codigo.UtilTienda;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author giise
  */
 public class ConsultaLibro extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Consultas
-     */
+    ArrayList<Pedido> listaPedidos = UtilTienda.getListaPedidos();
+    ArrayList<Libro> listaLibrosVendidos = new ArrayList<>();
+    private DefaultTableModel d;
+    private Object[] datos;
+    
     public ConsultaLibro() {
         initComponents();
         initStyles();
+        IniciarTabla();
     }
     
     public void initStyles(){
         Titulo.putClientProperty( "FlatLaf.style", "font: $h1.font" );
+    }
+    
+    public void IniciarTabla(){
+        d = new DefaultTableModel();
+        Tabla.setModel(d);
+        String[] cabecera = {"Codigo del pedido", "Ejemplares vendidos", "Fecha"};
+        d.setColumnIdentifiers(cabecera);
+        datos = new Object[3];
+    }
+    
+    public void AnnadirPedido(Pedido pedido){
+        LocalDate fecha = pedido.getFecha();
+        //long Codigo = pedido.get
+        for(Libro libro : listaLibrosVendidos){
+            long codigo = libro.getCodigoL();
+            datos[0] = codigo;
+            datos[1] = fecha;
+            d.addRow(datos);
+        }
     }
 
     /**
@@ -34,8 +64,14 @@ public class ConsultaLibro extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TituloL = new javax.swing.JTextField();
         BotonBuscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        PrimerEjemplar = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        TotalEjemplares = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -45,22 +81,63 @@ public class ConsultaLibro extends javax.swing.JPanel {
         jLabel2.setText("Introduzca el titulo del libro: ");
 
         BotonBuscar.setText("Buscar");
+        BotonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBuscarActionPerformed(evt);
+            }
+        });
+
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Código del pedido", "Ejemplares vendidos", "Fecha"
+            }
+        ));
+        jScrollPane1.setViewportView(Tabla);
+
+        jLabel1.setText("Primer ejemplar:");
+
+        PrimerEjemplar.setText("PrimerEj");
+
+        jLabel4.setText("Total:");
+
+        TotalEjemplares.setText("totalLibros");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Titulo)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(233, 233, 233)
+                                .addComponent(Titulo))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(PrimerEjemplar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(104, 104, 104)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TotalEjemplares, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(52, 52, 52)
-                .addComponent(BotonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(219, Short.MAX_VALUE))
+                        .addComponent(TituloL, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(BotonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,9 +147,17 @@ public class ConsultaLibro extends javax.swing.JPanel {
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TituloL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonBuscar))
-                .addContainerGap(349, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(PrimerEjemplar)
+                    .addComponent(jLabel4)
+                    .addComponent(TotalEjemplares))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -87,12 +172,35 @@ public class ConsultaLibro extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
+        boolean encontrado = false;
+        for(Pedido pedido : listaPedidos){
+            listaLibrosVendidos = pedido.getListaLibrosPedidos();
+            for(Libro libro : listaLibrosVendidos){
+                String titulo = libro.getTitulo();
+                if(titulo.equals(TituloL.getText())){
+                    AnnadirPedido(pedido);
+                    encontrado = true;
+                }   
+            }   
+        }
+        if(!encontrado){
+            JOptionPane.showMessageDialog(this, "No se encontraron pedidos asociados al cliente indicado");
+        }
+    }//GEN-LAST:event_BotonBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonBuscar;
+    private javax.swing.JLabel PrimerEjemplar;
+    private javax.swing.JTable Tabla;
     private javax.swing.JLabel Titulo;
+    private javax.swing.JTextField TituloL;
+    private javax.swing.JLabel TotalEjemplares;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
