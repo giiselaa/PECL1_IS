@@ -6,7 +6,7 @@ package codigo;
 
 /**
  *
- * @author elia, Gisela y Achraf
+ * @author elia, Gisela
  */
 public class Socio extends ClienteFidelizado{
 
