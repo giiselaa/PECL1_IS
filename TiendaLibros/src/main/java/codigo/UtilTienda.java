@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  *
- * @author Elia, Gisela, Achraf
+ * @author Elia, Gisela
  */
 public class UtilTienda {
     

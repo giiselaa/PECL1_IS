@@ -14,7 +14,7 @@ import presentacion.Inicio;
 
 /**
  *
- * @author giise
+ * @author Gisela
  */
 public class PedidosPendientes extends javax.swing.JPanel {
 

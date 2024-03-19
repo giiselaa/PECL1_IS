@@ -14,7 +14,7 @@ import presentacion.Inicio;
 
 /**
  *
- * @author Elia, Gisela, Achraf
+ * @author Elia, Gisela
  */
 public class Fidelizacion extends javax.swing.JPanel {
 

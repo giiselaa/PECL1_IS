@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author Elia, Gisela y Achraf
+ * @author Elia, Gisela
  */
 public class ClienteFidelizado extends Cliente{
     

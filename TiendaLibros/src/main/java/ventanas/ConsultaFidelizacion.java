@@ -11,7 +11,7 @@ import codigo.UtilTienda;
 
 /**
  *
- * @author Gisela, Elia, Achraf
+ * @author Gisela
  */
 public class ConsultaFidelizacion extends javax.swing.JFrame {
 

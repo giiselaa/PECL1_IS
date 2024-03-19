@@ -20,7 +20,7 @@ import presentacion.Inicio;
 
 /**
  *
- * @author giise
+ * @author Gisela
  */
 public class GenerarPedido extends javax.swing.JPanel {
     

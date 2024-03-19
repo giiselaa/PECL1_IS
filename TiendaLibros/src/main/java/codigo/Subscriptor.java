@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author elia, gisela y Achraf
+ * @author Elia, Gisela
  */
 public class Subscriptor extends ClienteFidelizado{
     

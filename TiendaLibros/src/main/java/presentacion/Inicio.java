@@ -16,7 +16,7 @@ import ventanas.Principal;
 
 /**
  *
- * @author Gisela, Elia y Achraf
+ * @author Gisela, Elia
  */
 public class Inicio extends javax.swing.JFrame {
     

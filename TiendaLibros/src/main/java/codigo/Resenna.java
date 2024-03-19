@@ -6,7 +6,7 @@ package codigo;
 
 /**
  *
- * @author Elia, Gisela, Achraf
+ * @author Elia, Gisela
  */
 public class Resenna {
     

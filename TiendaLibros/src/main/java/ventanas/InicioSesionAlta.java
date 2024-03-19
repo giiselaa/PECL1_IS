@@ -11,7 +11,7 @@ import presentacion.Inicio;
 
 /**
  *
- * @author giise
+ * @author Gisela
  */
 public class InicioSesionAlta extends javax.swing.JPanel {
 

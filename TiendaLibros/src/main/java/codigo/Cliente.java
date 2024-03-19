@@ -3,7 +3,7 @@ package codigo;
 
 /**
  * 
- * @author Elia Encinas, Gisela González y Achraf El Kasmi
+ * @author Elia Encinas, Gisela González
  */
 public class Cliente {
     

@@ -14,7 +14,7 @@ import presentacion.Inicio;
 
 /**
  *
- * @author giise
+ * @author Gisela, Elia
  */
 public class DarAltaFidelizacion extends javax.swing.JPanel {
     

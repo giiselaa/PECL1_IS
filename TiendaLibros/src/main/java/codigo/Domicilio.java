@@ -2,7 +2,7 @@ package codigo;
 
 /**
  * 
- * @author Elia Encinas, Gisela González y Achraf (apellido)
+ * @author Elia Encinas, Gisela González
  */
 public class Domicilio {
     

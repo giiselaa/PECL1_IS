@@ -13,7 +13,7 @@ import presentacion.Inicio;
 
 /**
  *
- * @author giise
+ * @author Elia, Gisela
  */
 public class Principal extends javax.swing.JPanel {
 

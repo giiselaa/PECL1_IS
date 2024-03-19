@@ -8,7 +8,7 @@ import codigo.Domicilio;
 
 /**
  *
- * @author giise
+ * @author Gisela
  */
 public class Direccion extends javax.swing.JFrame {
 

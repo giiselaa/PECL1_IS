@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author giise
+ * @author Gisela
  */
 public class ConsultaCliente extends javax.swing.JPanel {
 

@@ -6,7 +6,7 @@ package ventanas;
 
 /**
  *
- * @author giise
+ * @author Gisela
  */
 public class RealizarInforme extends javax.swing.JPanel {
 

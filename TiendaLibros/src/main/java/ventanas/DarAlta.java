@@ -13,7 +13,7 @@ import presentacion.Inicio;
 
 /**
  *
- * @author giise
+ * @author Gisela
  */
 public class DarAlta extends javax.swing.JPanel {
 
