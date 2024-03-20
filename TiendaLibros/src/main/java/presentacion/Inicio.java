@@ -105,7 +105,7 @@ public class Inicio extends javax.swing.JFrame {
         menu.setPreferredSize(new java.awt.Dimension(270, 640));
 
         BotonPrincipal.setBackground(new java.awt.Color(94, 57, 21));
-        BotonPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         BotonPrincipal.setText("Principal");
         BotonPrincipal.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
@@ -119,7 +119,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         BotonAlta.setBackground(new java.awt.Color(94, 57, 21));
-        BotonAlta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonAlta.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonAlta.setForeground(new java.awt.Color(255, 255, 255));
         BotonAlta.setText("Dar de Alta");
         BotonAlta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
@@ -133,7 +133,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         BotonPedididosP.setBackground(new java.awt.Color(94, 57, 21));
-        BotonPedididosP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonPedididosP.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonPedididosP.setForeground(new java.awt.Color(255, 255, 255));
         BotonPedididosP.setText("Pedidos Pendientes");
         BotonPedididosP.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
@@ -147,7 +147,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         BotonFidelizacion.setBackground(new java.awt.Color(94, 57, 21));
-        BotonFidelizacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonFidelizacion.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonFidelizacion.setForeground(new java.awt.Color(255, 255, 255));
         BotonFidelizacion.setText("Programa de fidelización");
         BotonFidelizacion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
@@ -161,7 +161,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         BotonSalir.setBackground(new java.awt.Color(94, 57, 21));
-        BotonSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonSalir.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonSalir.setForeground(new java.awt.Color(255, 255, 255));
         BotonSalir.setText("Cerrar/Salir");
         BotonSalir.setBorder(null);
@@ -174,7 +174,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         BotonConsulta.setBackground(new java.awt.Color(94, 57, 21));
-        BotonConsulta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonConsulta.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonConsulta.setForeground(new java.awt.Color(255, 255, 255));
         BotonConsulta.setText("Consultas");
         BotonConsulta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
@@ -188,7 +188,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         BotonInforme.setBackground(new java.awt.Color(94, 57, 21));
-        BotonInforme.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonInforme.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonInforme.setForeground(new java.awt.Color(255, 255, 255));
         BotonInforme.setText("Informes");
         BotonInforme.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
